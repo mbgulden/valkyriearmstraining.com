@@ -11,6 +11,8 @@ interface Props {
   secondaryCTA?: { label: string; href: string };
   overlay?: boolean;
   fullHeight?: boolean;
+  focalX?: string;
+  focalY?: string;
 }
 
 const {
@@ -25,13 +27,21 @@ const {
   secondaryCTA,
   overlay = true,
   fullHeight = false,
+  focalX,
+  focalY,
 } = Astro.props;
 ---
 
 <section class:list={['hero', `hero--${variant}`, { 'hero--full': fullHeight }]}>
   {image && (
     <div class="hero-bg">
-      <img src={image} alt={imageAlt} class="hero-bg-image" loading="eager" />
+      <img
+        src={image}
+        alt={imageAlt}
+        class="hero-bg-image"
+        style={`object-position: ${focalX || '50%'} ${focalY || '50%'};`}
+        loading="eager"
+      />
       {overlay && <div class="hero-overlay" />}
     </div>
   )}

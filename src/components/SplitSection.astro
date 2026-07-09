@@ -8,6 +8,8 @@ interface Props {
   reversed?: boolean;
   items?: string[];
   variant?: 'text-list' | 'image-text' | 'reversed';
+  focalX?: string;
+  focalY?: string;
 }
 
 const {
@@ -19,6 +21,8 @@ const {
   reversed = false,
   items = [],
   variant = 'image-text',
+  focalX,
+  focalY,
 } = Astro.props;
 ---
 
@@ -44,7 +48,13 @@ const {
     {image && (
       <div class={`split-media reveal ${reversed || variant === 'reversed' ? 'animate-slide-left' : 'animate-slide-right'}`}>
         <div class="split-image-wrap">
-          <img src={image} alt={imageAlt} class="split-image" loading="lazy" />
+          <img
+            src={image}
+            alt={imageAlt}
+            class="split-image"
+            style={`object-position: ${focalX || '50%'} ${focalY || '50%'};`}
+            loading="lazy"
+          />
         </div>
       </div>
     )}
