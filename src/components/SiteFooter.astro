@@ -26,8 +26,7 @@ const serviceAreas = [
       <!-- Brand column -->
       <div class="footer-brand">
         <a href="/" class="footer-logo" aria-label="Valkyrie Arms Training">
-          <span class="footer-logo-icon">⚔</span>
-          <span class="footer-logo-name">Valkyrie Arms Training</span>
+          <img src="/images/logo-full.jpg" alt="Valkyrie Arms Training" class="footer-logo-image" width="160" height="45" />
         </a>
         <p class="footer-mission">
           Empowering women through preparedness, education, and practical skills
@@ -144,19 +143,16 @@ const serviceAreas = [
     margin-bottom: var(--pwp-space-4);
   }
 
-  .footer-logo-icon {
-    font-size: 1.5rem;
-    filter: drop-shadow(0 0 6px rgba(155, 109, 215, 0.5));
+  .footer-logo-image {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+    border-radius: var(--pwp-radius-sm);
+    transition: opacity var(--pwp-motion-fast) var(--pwp-easing-default);
   }
 
-  .footer-logo-name {
-    font-family: var(--pwp-font-family-heading);
-    font-weight: var(--pwp-font-weight-bold);
-    font-size: var(--pwp-font-size-lg);
-    background: linear-gradient(135deg, var(--pwp-color-accent-primary), var(--pwp-color-accent-gold));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  .footer-logo:hover .footer-logo-image {
+    opacity: 0.85;
   }
 
   .footer-mission {

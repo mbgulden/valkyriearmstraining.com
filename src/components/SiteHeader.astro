@@ -18,11 +18,7 @@ const navLinks = [
 <header class:list={['site-header', { transparent }]} id="site-header">
   <div class="container header-inner">
     <a href="/" class="logo" aria-label="Valkyrie Arms Training - Home">
-      <span class="logo-icon">⚔</span>
-      <span class="logo-text">
-        <span class="logo-name">Valkyrie</span>
-        <span class="logo-tagline">Arms Training</span>
-      </span>
+      <img src="/images/logo-full.jpg" alt="Valkyrie Arms Training" class="logo-image" width="180" height="50" />
     </a>
 
     <nav class="nav-desktop hide-mobile" aria-label="Main navigation">
@@ -95,44 +91,31 @@ const navLinks = [
   .logo {
     display: flex;
     align-items: center;
-    gap: var(--pwp-space-3);
     text-decoration: none;
     color: var(--pwp-color-text-primary);
+    flex-shrink: 0;
   }
 
   .logo:hover {
     color: var(--pwp-color-text-primary);
   }
 
-  .logo-icon {
-    font-size: 1.75rem;
-    filter: drop-shadow(0 0 8px rgba(155, 109, 215, 0.5));
+  .logo-image {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    border-radius: var(--pwp-radius-sm);
+    transition: opacity var(--pwp-motion-fast) var(--pwp-easing-default);
   }
 
-  .logo-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.1;
+  .logo:hover .logo-image {
+    opacity: 0.9;
   }
 
-  .logo-name {
-    font-family: var(--pwp-font-family-heading);
-    font-weight: var(--pwp-font-weight-bold);
-    font-size: var(--pwp-font-size-lg);
-    letter-spacing: 0.04em;
-    background: linear-gradient(135deg, var(--pwp-color-accent-primary), var(--pwp-color-accent-gold));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .logo-tagline {
-    font-family: var(--pwp-font-family-heading);
-    font-size: var(--pwp-font-size-xs);
-    font-weight: var(--pwp-font-weight-medium);
-    color: var(--pwp-color-text-tertiary);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
+  @media (max-width: 768px) {
+    .logo-image {
+      height: 40px;
+    }
   }
 
   /* Desktop nav */
