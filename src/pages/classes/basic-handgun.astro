@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import SplitSection from '../../components/SplitSection.astro';
+import LeadCapture from '../../components/LeadCapture.astro';
+---
+
+<BaseLayout
+  title="Basic Handgun Fundamentals"
+  description="Beginner-friendly women's handgun class in Meridian, ID. Learn firearm safety rules, parts of a handgun, proper grip and stance, loading and unloading, and live fire basics."
+>
+  <Hero
+    variant="service-detail"
+    eyebrow="Classes"
+    title="Basic Handgun Fundamentals"
+    description="Brand new to firearms? This beginner-friendly class is designed for women who have little to no experience. Learn the fundamentals in a patient, supportive environment."
+    image="/images/hands-on-training.jpg"
+    imageAlt="Close-up of hands-on firearms training"
+    primaryCTA={{ label: 'Register Now', href: '#lead-capture' }}
+    secondaryCTA={{ label: 'Call Us', href: 'tel:208-815-8592' }}
+  />
+
+  <SplitSection
+    eyebrow="What You'll Learn"
+    title="Build a Strong Foundation"
+    description="Whether you've never touched a firearm or just want to brush up on the basics, this class gives you the knowledge and hands-on practice to feel confident and safe."
+    image="/images/training-scene.jpg"
+    imageAlt="Women in firearms training class"
+    items={[
+      'Universal firearm safety rules',
+      'Parts of a handgun and how they work',
+      'Proper grip, stance, and sight alignment',
+      'Loading and unloading safely',
+      'Live fire basics on the range',
+    ]}
+  />
+
+  <SplitSection
+    eyebrow="No Experience Needed"
+    title="Designed for True Beginners"
+    description="Many of our students have little to no prior experience with firearms, and that's exactly who this class is for. You don't need to own a firearm to attend — Valkyrie is about preparedness in all its forms."
+    image="/images/hero-range-action.jpg"
+    imageAlt="Women at outdoor shooting range"
+    reversed={true}
+    items={[
+      'Patient, step-by-step instruction',
+      'Small class sizes for personalized attention',
+      'Women-only environment — learn at your own pace',
+      'No firearm ownership required to participate',
+    ]}
+  />
+
+  <div class="section container">
+    <div class="reveal" style="text-align: center; max-width: 600px; margin: 0 auto;">
+      <span class="eyebrow">Pricing & Schedule</span>
+      <h2>Ready to Get Started?</h2>
+      <p style="color: var(--pwp-color-text-secondary); line-height: var(--pwp-line-height-relaxed);">
+        Contact us for current pricing and upcoming class dates. Classes are available in Meridian and the surrounding Treasure Valley area, including Boise, Eagle, Nampa, Kuna, and Caldwell.
+      </p>
+    </div>
+  </div>
+
+  <LeadCapture
+    eyebrow="Enroll Today"
+    title="Sign Up for Basic Handgun"
+    description="Fill out the form below and we'll get back to you with available class dates and everything you need to know."
+  />
+</BaseLayout>

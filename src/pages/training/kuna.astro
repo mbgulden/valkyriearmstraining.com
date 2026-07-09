@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import SplitSection from '../../components/SplitSection.astro';
+import CardGrid from '../../components/CardGrid.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadCapture from '../../components/LeadCapture.astro';
+
+const city = 'Kuna';
+
+const classes = [
+  { title: 'Idaho Enhanced Concealed Carry', description: 'Comprehensive concealed carry course covering Idaho firearm laws, proper technique, and defensive decision-making.', href: '/classes/concealed-carry', icon: '🎯' },
+  { title: 'Basic Handgun Fundamentals', description: 'Perfect for beginners. Learn firearm safety, proper grip, stance, and live fire basics in a supportive environment.', href: '/classes/basic-handgun', icon: '🔫' },
+  { title: 'Self-Defense Basics', description: 'Practical self-defense skills including situational awareness, non-lethal options, and personal safety strategies.', href: '/classes/self-defense', icon: '🛡️' },
+];
+
+const faqItems = [
+  { question: `I'm in ${city}. How do I get to your facility?`, answer: `Our training facility at 272 SW 5th #400, Meridian, ID 83642 is a short drive from ${city}. We're centrally located in the Treasure Valley and easily accessible.` },
+  { question: "I've never touched a firearm before. Is this class for me?", answer: "Absolutely. Many of our students have little to no prior experience. Our classes are designed for everyday women, and we meet you where you are. No experience is required, and no question is a bad question." },
+  { question: "Do I have to own a firearm to take your classes?", answer: "Not at all. Valkyrie is about preparedness, confidence, and personal safety. While we offer firearms training, we also teach situational awareness, non-lethal defense options, self-defense, medical preparedness, and other practical skills." },
+];
+
+const jsonLd = { "@context": "https://schema.org", "@type": "LocalBusiness", "name": "Valkyrie Arms Training", "description": `Women's firearms and self-defense training serving ${city}, Idaho.`, "url": `https://valkyriearmstraining.com/training/kuna`, "telephone": ["208-815-8592", "208-813-8780"], "email": "info@valkyriearmstraining.com", "address": { "@type": "PostalAddress", "streetAddress": "272 SW 5th #400", "addressLocality": "Meridian", "addressRegion": "ID", "postalCode": "83642", "addressCountry": "US" }, "areaServed": { "@type": "City", "name": city, "containedInPlace": { "@type": "State", "name": "Idaho" } } };
+---
+
+<BaseLayout title={`Women's Firearms Training in ${city}, Idaho`} description={`Women's firearms and self-defense training for ${city}, Idaho women. Valkyrie Arms Training — women-only classes in the Treasure Valley.`} jsonLd={jsonLd}>
+  <Hero variant="local-seo" eyebrow={`Serving ${city}, Idaho`} title={`Women's Self-Defense & Firearms Training for ${city}`} description={`${city} women — whether you've never held a firearm or have been shooting for years, Valkyrie Arms Training provides a safe, women-only environment just minutes away in Meridian.`} image="/images/training-scene.jpg" imageAlt={`Firearms training for ${city}, Idaho women`} primaryCTA={{ label: 'View Classes', href: '/classes' }} secondaryCTA={{ label: 'Contact Us', href: '/contact' }} />
+
+  <SplitSection eyebrow="Our Mission" title={`Empowering ${city} Women`} description="Every woman deserves to feel capable, confident, and prepared. We provide firearms training, situational awareness, self-defense, medical preparedness, and more — all in a supportive, judgment-free environment." image="/images/hands-on-training.jpg" imageAlt="Hands-on training session" items={['Women-only classes — zero intimidation', 'Expert female instructors', 'No experience required', 'Multiple training disciplines', 'Conveniently located near Kuna']} />
+
+  <section class="section"><div class="container"><span class="eyebrow">Classes</span><h2 class="section-heading reveal">Training for {city} Residents</h2><div class="reveal delay-100" style="margin-top: var(--pwp-space-8);"><CardGrid variant="3-up" items={classes} /></div></div></section>
+
+  <section class="section"><div class="container"><FAQ title={`${city} Student Questions`} eyebrow="FAQ" items={faqItems} /></div></section>
+
+  <LeadCapture eyebrow={`${city} Training`} title={`Ready to Get Started?`} description={`Contact Valkyrie Arms Training today to learn about upcoming classes near ${city}.`} />
+</BaseLayout>

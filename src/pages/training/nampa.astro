@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import SplitSection from '../../components/SplitSection.astro';
+import CardGrid from '../../components/CardGrid.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadCapture from '../../components/LeadCapture.astro';
+
+const city = 'Nampa';
+
+const classes = [
+  { title: 'Idaho Enhanced Concealed Carry', description: 'Comprehensive concealed carry course covering Idaho firearm laws, proper technique, and defensive decision-making.', href: '/classes/concealed-carry', icon: '🎯' },
+  { title: 'Basic Handgun Fundamentals', description: 'Perfect for beginners. Learn firearm safety, proper grip, stance, and live fire basics in a supportive environment.', href: '/classes/basic-handgun', icon: '🔫' },
+  { title: 'Self-Defense Basics', description: 'Practical self-defense skills including situational awareness, non-lethal options, and personal safety strategies.', href: '/classes/self-defense', icon: '🛡️' },
+];
+
+const faqItems = [
+  { question: `I'm in ${city}. Is the drive to your facility worth it?`, answer: `Absolutely! Our Meridian facility at 272 SW 5th #400 is a quick drive from ${city} via I-84. Many of our students come from across Canyon County and find the welcoming, women-only environment well worth the short trip.` },
+  { question: "I've never touched a firearm before. Is this class for me?", answer: "Absolutely. Many of our students have little to no prior experience. Our classes are designed for everyday women, and we meet you where you are. No experience is required, and no question is a bad question." },
+  { question: "I have physical limitations. Can I still participate?", answer: "Yes. Every woman deserves access to personal safety education. We understand that physical abilities, fitness levels, and mobility vary from person to person. Our instructors work to provide practical options and techniques that can be adapted to individual needs and abilities whenever possible." },
+];
+
+const jsonLd = { "@context": "https://schema.org", "@type": "LocalBusiness", "name": "Valkyrie Arms Training", "description": `Women's firearms and self-defense training serving ${city}, Idaho.`, "url": `https://valkyriearmstraining.com/training/nampa`, "telephone": ["208-815-8592", "208-813-8780"], "email": "info@valkyriearmstraining.com", "address": { "@type": "PostalAddress", "streetAddress": "272 SW 5th #400", "addressLocality": "Meridian", "addressRegion": "ID", "postalCode": "83642", "addressCountry": "US" }, "areaServed": { "@type": "City", "name": city, "containedInPlace": { "@type": "State", "name": "Idaho" } } };
+---
+
+<BaseLayout title={`Women's Firearms Training in ${city}, Idaho`} description={`Women's firearms and self-defense training for ${city}, Idaho. Expert-led, women-only classes at Valkyrie Arms Training in Meridian — minutes from ${city}.`} jsonLd={jsonLd}>
+  <Hero variant="local-seo" eyebrow={`Serving ${city}, Idaho`} title={`Women's Firearms & Self-Defense Training for ${city}`} description={`${city} women — build your confidence, skills, and preparedness with Valkyrie Arms Training. Our women-only facility in nearby Meridian provides a safe, supportive space to learn at your own pace.`} image="/images/hero-range-action.jpg" imageAlt={`Women's training for ${city}, Idaho`} primaryCTA={{ label: 'View Classes', href: '/classes' }} secondaryCTA={{ label: 'Contact Us', href: '/contact' }} />
+
+  <SplitSection eyebrow="Why Valkyrie" title={`Serving ${city} & Canyon County Women`} description="Every woman is welcome at Valkyrie, whether a native Idahoan who grew up hunting around the farm, or someone who has never held a gun. We will explain all the laws for Idaho so that anyone can be confident no matter where they are." image="/images/cheree-at-range.jpg" imageAlt="CheRee at the training range" items={['Women-only, supportive environment', 'No experience required', 'Covers firearms and non-lethal options', 'Easy access from Nampa via I-84', 'Affordable training for all backgrounds']} />
+
+  <section class="section"><div class="container"><span class="eyebrow">Classes</span><h2 class="section-heading reveal">Training Available for {city} Women</h2><div class="reveal delay-100" style="margin-top: var(--pwp-space-8);"><CardGrid variant="3-up" items={classes} /></div></div></section>
+
+  <section class="section"><div class="container"><FAQ title={`Questions from ${city} Students`} eyebrow="FAQ" items={faqItems} /></div></section>
+
+  <LeadCapture eyebrow={`${city} Training`} title={`Start Training Today`} description={`${city} women are building confidence through preparedness at Valkyrie. Contact us to learn about upcoming classes.`} />
+</BaseLayout>

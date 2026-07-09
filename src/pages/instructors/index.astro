@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import CardGrid from '../../components/CardGrid.astro';
+import SplitSection from '../../components/SplitSection.astro';
+---
+
+<BaseLayout
+  title="Meet Your Instructors"
+  description="Meet the women behind Valkyrie Arms Training. CheRee Eveland and Dez bring real-world experience, passion, and a commitment to empowering women through preparedness and education."
+>
+  <Hero
+    variant="centered"
+    eyebrow="Our Team"
+    title="Meet Your Instructors"
+    description="At Valkyrie Arms Training, you'll learn from women who are passionate about empowering other women through preparedness, education, and practical skills."
+    image="/images/team-partnership.jpg"
+    imageAlt="Valkyrie Arms Training team together outdoors"
+  />
+
+  <div class="section container">
+    <div class="reveal" style="text-align: center; max-width: 600px; margin: 0 auto; margin-bottom: var(--pwp-space-12);">
+      <span class="eyebrow">Instructors</span>
+      <h2>Your Guides to Confidence & Preparedness</h2>
+    </div>
+    <CardGrid
+      variant="linked-card"
+      columns={2}
+      items={[
+        {
+          title: 'CheRee Eveland',
+          description: 'Idaho native, entrepreneur, and founder of Valkyrie Arms Training, passionate about helping women build confidence through preparedness, education, and practical life skills.',
+          image: '/images/cheree-at-range.jpg',
+          imageAlt: 'CheRee Eveland in purple shirt at the range',
+          href: '/instructors/cheree-eveland',
+          eyebrow: 'Owner & CEO',
+        },
+        {
+          title: 'Dez',
+          description: 'Co-Founder and Lead Firearms Instructor with a lifetime of firearms experience, professional racing career, military service, and a passion for teaching women to protect themselves.',
+          image: '/images/dez-tactical.jpg',
+          imageAlt: 'Dez in tactical gear',
+          href: '/instructors/dez',
+          eyebrow: 'Co-Founder & Lead Firearms Instructor',
+        },
+      ]}
+    />
+  </div>
+
+  <SplitSection
+    eyebrow="Our Philosophy"
+    title="Our Teaching Philosophy"
+    description="We believe learning should be approachable, encouraging, and empowering. Women learn differently — most of us want to know the 'why' and the 'how' something works. That's why Valkyrie classes are designed to meet you where you are, whether you've never touched a firearm or have been shooting for years."
+    image="/images/training-scene.jpg"
+    imageAlt="Training scene"
+    items={[
+      'Approachable, encouraging, and empowering instruction',
+      'Designed for women, by women',
+      'Patient, step-by-step teaching that explains the why',
+      'All experience levels welcome',
+      'Accessible to women with physical limitations',
+    ]}
+  />
+
+  <SplitSection
+    eyebrow="Our Mission"
+    title="Empowering Women Through Preparedness"
+    description="Empowering women through preparedness, education, and practical skills to confidently protect themselves, their families, and their communities. We don't believe every woman needs to carry a firearm — but we do believe every woman deserves to feel prepared, confident, and capable."
+    image="/images/hero-range-action.jpg"
+    imageAlt="Women at outdoor range"
+    reversed={true}
+  />
+</BaseLayout>

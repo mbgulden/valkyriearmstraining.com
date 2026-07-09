@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import CardGrid from '../../components/CardGrid.astro';
+import LeadCapture from '../../components/LeadCapture.astro';
+
+const values = [
+  {
+    title: 'Empowerment',
+    description: 'We believe every woman has the right to feel strong, capable, and confident in her ability to protect herself and the people she loves.',
+    icon: '💪',
+  },
+  {
+    title: 'Preparedness',
+    description: 'Being prepared isn\'t about fear — it\'s about confidence. We equip women with the knowledge and skills to face the unexpected with composure.',
+    icon: '🎯',
+  },
+  {
+    title: 'Education',
+    description: 'Knowledge is the foundation of confidence. We teach the "why" and "how," not just the "what," because understanding builds lasting competence.',
+    icon: '📚',
+  },
+  {
+    title: 'Community',
+    description: 'Valkyrie is more than classes — it\'s a sisterhood of women supporting each other on the journey to preparedness, confidence, and resilience.',
+    icon: '🤝',
+  },
+  {
+    title: 'Accessibility',
+    description: 'Every woman deserves access to quality training regardless of experience level, physical ability, or background. We adapt our instruction to meet you where you are.',
+    icon: '🌍',
+  },
+  {
+    title: 'Compassion',
+    description: 'We lead with understanding and empathy. Every woman comes to us with a unique story, and we honor that by creating a judgment-free, supportive space.',
+    icon: '💜',
+  },
+  {
+    title: 'Responsibility',
+    description: 'We take the responsibility of firearms education seriously. We teach safe, responsible practices and instill a deep respect for the weight of that responsibility.',
+    icon: '⚖️',
+  },
+  {
+    title: 'Resilience',
+    description: 'We build women who are mentally and physically resilient — prepared not just for a single scenario, but for whatever life brings their way.',
+    icon: '🔥',
+  },
+];
+---
+
+<BaseLayout
+  title="Our Core Values"
+  description="The eight core values of Valkyrie Arms Training: Empowerment, Preparedness, Education, Community, Accessibility, Compassion, Responsibility, and Resilience."
+>
+  <!-- Hero -->
+  <Hero
+    variant="minimal"
+    eyebrow="What Drives Us"
+    title="Our Core Values"
+    description="Everything we do at Valkyrie Arms Training is guided by these eight principles. They shape our classes, our community, and our commitment to every woman who walks through our doors."
+  />
+
+  <!-- Values Grid -->
+  <section class="section">
+    <div class="container">
+      <CardGrid variant="icon-card" items={values} columns={4} />
+    </div>
+  </section>
+
+  <!-- Values in Practice -->
+  <section class="section values-practice">
+    <div class="container">
+      <div class="values-practice-inner reveal">
+        <span class="eyebrow">Values in Practice</span>
+        <h2>More Than Words on a Wall</h2>
+        <p class="section-subheading">Our values aren't aspirational — they're operational. Every class is designed with accessibility in mind. Every interaction is grounded in compassion. Every student is treated as capable and deserving of empowerment. When you train with Valkyrie, you experience these values in action.</p>
+        <a href="/contact" class="btn btn-primary">Experience the Difference</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lead Capture -->
+  <LeadCapture
+    eyebrow="Live Our Values"
+    title="Train with Purpose"
+    description="Our values are your values. If you believe in empowerment, preparedness, and community, you belong at Valkyrie."
+  />
+</BaseLayout>
+
+<style>
+  .values-practice {
+    background: var(--pwp-color-background-elevated);
+    border-top: 1px solid var(--pwp-color-border-subtle);
+    border-bottom: 1px solid var(--pwp-color-border-subtle);
+  }
+
+  .values-practice-inner {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--pwp-space-4);
+  }
+
+  .values-practice-inner h2 {
+    font-size: var(--pwp-font-size-3xl);
+  }
+
+  .values-practice-inner .section-subheading {
+    text-align: center;
+    margin-bottom: var(--pwp-space-4);
+  }
+</style>

@@ -1,0 +1,269 @@
+---
+interface Props {
+  variant?: 'default' | 'split-media' | 'centered' | 'service-detail' | 'local-seo' | 'profile' | 'minimal';
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+  description?: string;
+  image?: string;
+  imageAlt?: string;
+  primaryCTA?: { label: string; href: string };
+  secondaryCTA?: { label: string; href: string };
+  overlay?: boolean;
+  fullHeight?: boolean;
+}
+
+const {
+  variant = 'default',
+  eyebrow,
+  title,
+  subtitle,
+  description,
+  image,
+  imageAlt = '',
+  primaryCTA,
+  secondaryCTA,
+  overlay = true,
+  fullHeight = false,
+} = Astro.props;
+---
+
+<section class:list={['hero', `hero--${variant}`, { 'hero--full': fullHeight }]}>
+  {image && (
+    <div class="hero-bg">
+      <img src={image} alt={imageAlt} class="hero-bg-image" loading="eager" />
+      {overlay && <div class="hero-overlay" />}
+    </div>
+  )}
+
+  <div class="container hero-content">
+    <div class="hero-text">
+      {eyebrow && <span class="eyebrow animate-fade-in-up">{eyebrow}</span>}
+      <h1 class="hero-title animate-fade-in-up delay-100">
+        {subtitle ? (
+          <>
+            {title}
+            <span class="hero-title-accent">{subtitle}</span>
+          </>
+        ) : (
+          <Fragment set:html={title} />
+        )}
+      </h1>
+      {description && (
+        <p class="hero-description animate-fade-in-up delay-200">{description}</p>
+      )}
+      {(primaryCTA || secondaryCTA) && (
+        <div class="hero-actions animate-fade-in-up delay-300">
+          {primaryCTA && (
+            <a href={primaryCTA.href} class="btn btn-primary">{primaryCTA.label}</a>
+          )}
+          {secondaryCTA && (
+            <a href={secondaryCTA.href} class="btn btn-secondary">{secondaryCTA.label}</a>
+          )}
+        </div>
+      )}
+    </div>
+
+    {variant === 'split-media' && image && (
+      <div class="hero-media animate-slide-right delay-200">
+        <img src={image} alt={imageAlt} class="hero-media-image" loading="eager" />
+      </div>
+    )}
+  </div>
+
+  {variant !== 'minimal' && (
+    <div class="hero-gradient-bottom" />
+  )}
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 500px;
+    padding-top: calc(72px + var(--pwp-space-16));
+    padding-bottom: var(--pwp-space-16);
+    overflow: hidden;
+  }
+
+  .hero--full {
+    min-height: 100vh;
+  }
+
+  .hero--minimal {
+    min-height: 320px;
+    padding-top: calc(72px + var(--pwp-space-12));
+    padding-bottom: var(--pwp-space-12);
+  }
+
+  .hero--centered .hero-text {
+    text-align: center;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .hero--centered .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero--centered .hero-actions {
+    justify-content: center;
+  }
+
+  /* Background image */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(15, 13, 19, 0.92) 0%,
+      rgba(15, 13, 19, 0.75) 50%,
+      rgba(15, 13, 19, 0.6) 100%
+    );
+  }
+
+  /* Content */
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: var(--pwp-space-12);
+  }
+
+  .hero--split-media .hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--pwp-space-12);
+  }
+
+  .hero--split-media .hero-bg {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .hero--split-media .hero-content {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pwp-space-4);
+  }
+
+  .hero-title {
+    font-size: var(--pwp-font-size-5xl);
+    font-weight: var(--pwp-font-weight-bold);
+    line-height: 1.1;
+    max-width: 18ch;
+  }
+
+  .hero--minimal .hero-title {
+    font-size: var(--pwp-font-size-4xl);
+  }
+
+  .hero--service-detail .hero-title {
+    font-size: var(--pwp-font-size-4xl);
+  }
+
+  .hero-title-accent {
+    display: block;
+    background: linear-gradient(135deg, var(--pwp-color-accent-primary), var(--pwp-color-accent-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: var(--pwp-font-size-4xl);
+      max-width: none;
+    }
+    .hero--minimal .hero-title,
+    .hero--service-detail .hero-title {
+      font-size: var(--pwp-font-size-3xl);
+    }
+  }
+
+  .hero-description {
+    font-size: var(--pwp-font-size-lg);
+    color: var(--pwp-color-text-secondary);
+    max-width: 50ch;
+    line-height: var(--pwp-line-height-relaxed);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--pwp-space-4);
+    margin-top: var(--pwp-space-4);
+  }
+
+  /* Split media image */
+  .hero-media {
+    position: relative;
+    border-radius: var(--pwp-radius-xl);
+    overflow: hidden;
+    box-shadow: var(--pwp-shadow-xl);
+  }
+
+  .hero-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 2px solid var(--pwp-color-border-default);
+    border-radius: var(--pwp-radius-xl);
+    pointer-events: none;
+  }
+
+  .hero-media-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+  }
+
+  /* Bottom gradient fade */
+  .hero-gradient-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 120px;
+    background: linear-gradient(to top, var(--pwp-color-background-page), transparent);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Profile variant */
+  .hero--profile {
+    min-height: 400px;
+  }
+
+  .hero--profile .hero-title {
+    font-size: var(--pwp-font-size-4xl);
+  }
+
+  /* Local SEO variant */
+  .hero--local-seo .hero-title {
+    font-size: var(--pwp-font-size-4xl);
+  }
+</style>

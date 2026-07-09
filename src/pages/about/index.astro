@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import SplitSection from '../../components/SplitSection.astro';
+import ProcessTimeline from '../../components/ProcessTimeline.astro';
+import LeadCapture from '../../components/LeadCapture.astro';
+
+const journeySteps = [
+  {
+    number: '01',
+    title: 'Explore',
+    description: 'Browse our classes and find the training that fits your goals — whether you\'re brand new to firearms or looking to advance your skills.',
+    icon: '🔍',
+  },
+  {
+    number: '02',
+    title: 'Connect',
+    description: 'Reach out to us by phone, email, or through our contact form. We\'ll answer your questions and help you choose the right class.',
+    icon: '💬',
+  },
+  {
+    number: '03',
+    title: 'Learn',
+    description: 'Attend your class in a supportive, women-focused environment. Our instructors meet you where you are and guide you every step of the way.',
+    icon: '📚',
+  },
+  {
+    number: '04',
+    title: 'Grow',
+    description: 'Build skills, gain confidence, and become part of the Valkyrie community. Continue your journey with advanced classes and ongoing training.',
+    icon: '🌟',
+  },
+];
+---
+
+<BaseLayout
+  title="About"
+  description="Learn about Valkyrie Arms Training — a women-focused firearms and self-defense training company in Meridian, Idaho. Founded to empower women through preparedness, education, and practical skills."
+>
+  <!-- Hero -->
+  <Hero
+    variant="centered"
+    title="About Valkyrie Arms Training"
+    description="Empowering women through preparedness, education, and practical skills to confidently protect themselves, their families, and their communities."
+    image="/images/team-partnership.jpg"
+    imageAlt="Valkyrie Arms Training team together outdoors"
+    overlay={true}
+  />
+
+  <!-- Founding Story -->
+  <SplitSection
+    eyebrow="Our Beginning"
+    title="Born from a Need That Wasn't Being Met"
+    description="CheRee is an Idaho native, entrepreneur, and founder of Valkyrie Arms Training, passionate about helping women build confidence through preparedness, education, and practical life skills. After years of taking classes that weren't designed for how women learn, she set out to create something different — a training environment that is approachable, encouraging, and empowering. Valkyrie Arms Training was built by women, for women."
+    image="/images/cheree-at-range.jpg"
+    imageAlt="CheRee at the range in her signature purple"
+    items={[
+      'Founded in Meridian, Idaho',
+      'Designed around how women actually learn',
+      'Serving Meridian, Boise, Eagle, Nampa, Kuna, and Caldwell',
+      'Training by appointment — 10am to 7pm',
+    ]}
+  />
+
+  <!-- Journey Timeline -->
+  <ProcessTimeline
+    eyebrow="How It Works"
+    title="Your Journey with Valkyrie"
+    steps={journeySteps}
+  />
+
+  <!-- Team Intro Split -->
+  <SplitSection
+    eyebrow="Our Team"
+    title="Meet Your Instructors"
+    description="CheRee and Dez bring complementary backgrounds and a shared passion for empowering women. CheRee's entrepreneurial drive and philosophy that learning should be approachable meets Dez's lifetime of firearms experience, professional racing career, and military service with the Florida State Guard."
+    image="/images/hands-on-training.jpg"
+    imageAlt="Hands-on firearms training close-up"
+    reversed={true}
+    items={[
+      'Instructors who understand how women learn',
+      'Diverse backgrounds in education, military, and competitive sports',
+      'Patient, supportive, and judgment-free teaching style',
+    ]}
+  />
+
+  <!-- Lead Capture -->
+  <LeadCapture
+    eyebrow="Join Us"
+    title="Ready to Start Your Journey?"
+    description="We'd love to hear from you. Whether you have questions about our classes or you're ready to sign up, reach out and let's connect."
+  />
+</BaseLayout>

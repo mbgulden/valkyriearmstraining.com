@@ -1,0 +1,161 @@
+---
+interface CardItem {
+  title: string;
+  description: string;
+  icon?: string;
+  image?: string;
+  imageAlt?: string;
+  href?: string;
+  eyebrow?: string;
+  tag?: string;
+}
+
+interface Props {
+  variant?: '3-up' | '4-up' | 'icon-card' | 'linked-card';
+  items: CardItem[];
+  columns?: number;
+}
+
+const { variant = '3-up', items, columns } = Astro.props;
+const cols = columns || (variant === '4-up' ? 4 : 3);
+---
+
+<div class:list={['card-grid', `card-grid--${variant}`]} style={`--cols: ${cols}`}>
+  {items.map((item, i) => (
+    item.href ? (
+      <a href={item.href} class={`card card-item reveal delay-${(i % 4 + 1) * 100}`}>
+        {item.image && (
+          <div class="card-image-wrap">
+            <img src={item.image} alt={item.imageAlt || item.title} class="card-image" loading="lazy" />
+            {item.tag && <span class="card-tag">{item.tag}</span>}
+          </div>
+        )}
+        {item.icon && <span class="card-icon">{item.icon}</span>}
+        {item.eyebrow && <span class="eyebrow">{item.eyebrow}</span>}
+        <h3 class="card-title">{item.title}</h3>
+        <p class="card-desc">{item.description}</p>
+        <span class="card-arrow">→</span>
+      </a>
+    ) : (
+      <div class={`card card-item reveal delay-${(i % 4 + 1) * 100}`}>
+        {item.image && (
+          <div class="card-image-wrap">
+            <img src={item.image} alt={item.imageAlt || item.title} class="card-image" loading="lazy" />
+          </div>
+        )}
+        {item.icon && <span class="card-icon">{item.icon}</span>}
+        {item.eyebrow && <span class="eyebrow">{item.eyebrow}</span>}
+        <h3 class="card-title">{item.title}</h3>
+        <p class="card-desc">{item.description}</p>
+      </div>
+    )
+  ))}
+</div>
+
+<style>
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--cols), 1fr);
+    gap: var(--pwp-space-6);
+  }
+
+  @media (max-width: 1024px) {
+    .card-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .card-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .card-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pwp-space-3);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  a.card-item {
+    cursor: pointer;
+  }
+
+  a.card-item:hover .card-arrow {
+    transform: translateX(4px);
+    color: var(--pwp-color-accent-gold);
+  }
+
+  a.card-item:hover .card-image {
+    transform: scale(1.05);
+  }
+
+  .card-image-wrap {
+    position: relative;
+    border-radius: var(--pwp-radius-md);
+    overflow: hidden;
+    margin: calc(-1 * var(--pwp-space-8));
+    margin-bottom: var(--pwp-space-2);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .card-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform var(--pwp-motion-slow) var(--pwp-easing-default);
+  }
+
+  .card-tag {
+    position: absolute;
+    top: var(--pwp-space-3);
+    right: var(--pwp-space-3);
+    background: var(--pwp-color-accent-primary);
+    color: var(--pwp-color-text-primary);
+    font-size: var(--pwp-font-size-xs);
+    font-weight: var(--pwp-font-weight-semibold);
+    padding: var(--pwp-space-1) var(--pwp-space-3);
+    border-radius: var(--pwp-radius-full);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .card-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--pwp-space-2);
+    filter: drop-shadow(0 0 8px rgba(155, 109, 215, 0.4));
+  }
+
+  .card-title {
+    font-size: var(--pwp-font-size-xl);
+    font-weight: var(--pwp-font-weight-semibold);
+    color: var(--pwp-color-text-primary);
+  }
+
+  .card-desc {
+    font-size: var(--pwp-font-size-sm);
+    color: var(--pwp-color-text-secondary);
+    line-height: var(--pwp-line-height-relaxed);
+    flex-grow: 1;
+  }
+
+  .card-arrow {
+    font-size: var(--pwp-font-size-lg);
+    color: var(--pwp-color-accent-primary);
+    transition: all var(--pwp-motion-fast) var(--pwp-easing-default);
+    margin-top: auto;
+  }
+
+  /* Icon card variant */
+  .card-grid--icon-card .card-item {
+    text-align: center;
+    align-items: center;
+  }
+
+  .card-grid--icon-card .card-desc {
+    max-width: 30ch;
+  }
+</style>

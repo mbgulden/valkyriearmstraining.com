@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import SplitSection from '../../components/SplitSection.astro';
+import CardGrid from '../../components/CardGrid.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadCapture from '../../components/LeadCapture.astro';
+
+const city = 'Meridian';
+const state = 'Idaho';
+
+const classes = [
+  {
+    title: 'Idaho Enhanced Concealed Carry',
+    description: 'Comprehensive concealed carry course covering Idaho firearm laws, proper technique, and defensive decision-making.',
+    href: '/classes/concealed-carry',
+    icon: '🎯',
+  },
+  {
+    title: 'Basic Handgun Fundamentals',
+    description: 'Perfect for beginners. Learn firearm safety, proper grip, stance, and live fire basics in a supportive environment.',
+    href: '/classes/basic-handgun',
+    icon: '🔫',
+  },
+  {
+    title: 'Self-Defense Basics',
+    description: 'Practical self-defense skills including situational awareness, non-lethal options, and personal safety strategies.',
+    href: '/classes/self-defense',
+    icon: '🛡️',
+  },
+];
+
+const faqItems = [
+  {
+    question: `I live in ${city}. Where are your classes held?`,
+    answer: `Our training facility is conveniently located at 272 SW 5th #400, Meridian, ID 83642 — easily accessible from all areas of ${city} and the surrounding Treasure Valley. We are centrally located to serve women throughout Ada County and Canyon County.`,
+  },
+  {
+    question: "I've never touched a firearm before. Is this class for me?",
+    answer: "Absolutely. Many of our students have little to no prior experience. Our classes are designed for everyday women, and we meet you where you are. No experience is required, and no question is a bad question.",
+  },
+  {
+    question: "I'm nervous or intimidated. What if I don't know anything?",
+    answer: "You're exactly who we designed Valkyrie for. We understand that trying something new can feel intimidating, especially when it comes to personal safety and firearms. Our goal is to create a welcoming, supportive, and judgment-free environment where women can learn at their own pace and build confidence step by step.",
+  },
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Valkyrie Arms Training",
+  "description": `Women's firearms and self-defense training serving ${city}, ${state}. Empowering women through preparedness, education, and practical skills.`,
+  "url": `https://valkyriearmstraining.com/training/meridian`,
+  "telephone": ["208-815-8592", "208-813-8780"],
+  "email": "info@valkyriearmstraining.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "272 SW 5th #400",
+    "addressLocality": "Meridian",
+    "addressRegion": "ID",
+    "postalCode": "83642",
+    "addressCountry": "US"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": city,
+    "containedInPlace": { "@type": "State", "name": state }
+  }
+};
+---
+
+<BaseLayout
+  title={`Women's Firearms Training in ${city}, ${state}`}
+  description={`Women's firearms and self-defense training classes in ${city}, Idaho. Valkyrie Arms Training offers concealed carry, basic handgun, self-defense, and private training for women in the Treasure Valley.`}
+  jsonLd={jsonLd}
+>
+  <Hero
+    variant="local-seo"
+    eyebrow={`Serving ${city}, ${state}`}
+    title={`Women's Firearms & Self-Defense Training in ${city}`}
+    description={`Valkyrie Arms Training provides expert-led, women-only firearms and self-defense classes right here in ${city}, Idaho. Whether you're a complete beginner or looking to refine your skills, our welcoming environment is designed for you.`}
+    image="/images/hero-range-action.jpg"
+    imageAlt={`Women's firearms training in ${city}, Idaho`}
+    primaryCTA={{ label: 'View Classes', href: '/classes' }}
+    secondaryCTA={{ label: 'Contact Us', href: '/contact' }}
+  />
+
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Training in {city}</span>
+      <h2 class="section-heading reveal">Why {city} Women Choose Valkyrie</h2>
+      <p class="section-subheading reveal delay-100">
+        Every woman deserves to feel capable, confident, and prepared. Located at 272 SW 5th #400 in Meridian — just minutes from {city} — Valkyrie Arms Training offers a safe, supportive, women-only environment where you can build practical skills at your own pace.
+      </p>
+    </div>
+  </section>
+
+  <SplitSection
+    eyebrow="Our Approach"
+    title={`Designed for Women in ${city}`}
+    description="Women learn differently. Most of us want to know the 'why' and the 'how' something works. Our goal is that a firearm for you will become a tool that you feel comfortable with — just like your cell phone. Whether you're a lifelong Idahoan or new to the Treasure Valley, every woman is welcome at Valkyrie."
+    image="/images/cheree-at-range.jpg"
+    imageAlt="CheRee at the range with a student"
+    items={[
+      'Women-only environment — zero intimidation',
+      'Expert female instructors who understand your concerns',
+      'Beginner-friendly — no experience required',
+      'Practical skills beyond just firearms',
+      'Conveniently located in the Treasure Valley',
+    ]}
+  />
+
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Classes Available</span>
+      <h2 class="section-heading reveal">Training Classes for {city} Residents</h2>
+      <div class="reveal delay-100" style="margin-top: var(--pwp-space-8);">
+        <CardGrid variant="3-up" items={classes} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <FAQ
+        title={`Common Questions from ${city} Students`}
+        eyebrow="FAQ"
+        items={faqItems}
+      />
+    </div>
+  </section>
+
+  <LeadCapture
+    eyebrow={`Train in ${city}`}
+    title={`Ready to Start Your Training in ${city}?`}
+    description={`Join women across ${city} and the Treasure Valley who are building confidence through preparedness. Contact us today to learn about upcoming classes and reserve your spot.`}
+  />
+</BaseLayout>

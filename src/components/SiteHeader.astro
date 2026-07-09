@@ -1,0 +1,313 @@
+---
+interface Props {
+  transparent?: boolean;
+}
+
+const { transparent = false } = Astro.props;
+
+const navLinks = [
+  { label: 'About', href: '/about' },
+  { label: 'Classes', href: '/classes' },
+  { label: 'Instructors', href: '/instructors' },
+  { label: 'Simulator', href: '/simulator' },
+  { label: 'FAQ', href: '/faq' },
+  { label: 'Contact', href: '/contact' },
+];
+---
+
+<header class:list={['site-header', { transparent }]} id="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo" aria-label="Valkyrie Arms Training - Home">
+      <span class="logo-icon">⚔</span>
+      <span class="logo-text">
+        <span class="logo-name">Valkyrie</span>
+        <span class="logo-tagline">Arms Training</span>
+      </span>
+    </a>
+
+    <nav class="nav-desktop hide-mobile" aria-label="Main navigation">
+      {navLinks.map(link => (
+        <a href={link.href} class="nav-link">{link.label}</a>
+      ))}
+    </nav>
+
+    <a href="/contact" class="btn btn-primary header-cta hide-mobile">Book a Class</a>
+
+    <button
+      class="mobile-menu-toggle hide-desktop"
+      aria-label="Toggle mobile menu"
+      aria-expanded="false"
+      id="mobile-menu-toggle"
+    >
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <nav aria-label="Mobile navigation">
+      {navLinks.map(link => (
+        <a href={link.href} class="mobile-nav-link">{link.label}</a>
+      ))}
+      <a href="/contact" class="btn btn-primary mobile-cta">Book a Class</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(15, 13, 19, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--pwp-color-border-subtle);
+    transition: all var(--pwp-motion-normal) var(--pwp-easing-default);
+  }
+
+  .site-header.transparent {
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom-color: transparent;
+  }
+
+  .site-header.scrolled {
+    background: rgba(15, 13, 19, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom-color: var(--pwp-color-border-subtle);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+
+  /* Logo */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: var(--pwp-space-3);
+    text-decoration: none;
+    color: var(--pwp-color-text-primary);
+  }
+
+  .logo:hover {
+    color: var(--pwp-color-text-primary);
+  }
+
+  .logo-icon {
+    font-size: 1.75rem;
+    filter: drop-shadow(0 0 8px rgba(155, 109, 215, 0.5));
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .logo-name {
+    font-family: var(--pwp-font-family-heading);
+    font-weight: var(--pwp-font-weight-bold);
+    font-size: var(--pwp-font-size-lg);
+    letter-spacing: 0.04em;
+    background: linear-gradient(135deg, var(--pwp-color-accent-primary), var(--pwp-color-accent-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .logo-tagline {
+    font-family: var(--pwp-font-family-heading);
+    font-size: var(--pwp-font-size-xs);
+    font-weight: var(--pwp-font-weight-medium);
+    color: var(--pwp-color-text-tertiary);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* Desktop nav */
+  .nav-desktop {
+    display: flex;
+    align-items: center;
+    gap: var(--pwp-space-1);
+  }
+
+  .nav-link {
+    padding: var(--pwp-space-2) var(--pwp-space-4);
+    font-family: var(--pwp-font-family-heading);
+    font-size: var(--pwp-font-size-sm);
+    font-weight: var(--pwp-font-weight-medium);
+    color: var(--pwp-color-text-secondary);
+    text-decoration: none;
+    border-radius: var(--pwp-radius-md);
+    transition: all var(--pwp-motion-fast) var(--pwp-easing-default);
+    position: relative;
+  }
+
+  .nav-link:hover {
+    color: var(--pwp-color-text-primary);
+    background: var(--pwp-color-accent-primary-muted);
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 60%;
+    height: 2px;
+    background: var(--pwp-color-accent-primary);
+    border-radius: var(--pwp-radius-full);
+    transition: transform var(--pwp-motion-normal) var(--pwp-easing-default);
+  }
+
+  .nav-link:hover::after {
+    transform: translateX(-50%) scaleX(1);
+  }
+
+  .header-cta {
+    padding: var(--pwp-space-2) var(--pwp-space-6);
+    font-size: var(--pwp-font-size-sm);
+  }
+
+  /* Hamburger */
+  .mobile-menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: var(--pwp-space-2);
+    z-index: 101;
+  }
+
+  .hamburger-line {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--pwp-color-text-primary);
+    border-radius: var(--pwp-radius-full);
+    transition: all var(--pwp-motion-normal) var(--pwp-easing-default);
+    transform-origin: center;
+  }
+
+  .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .mobile-menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Mobile menu */
+  .mobile-menu {
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 13, 19, 0.98);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-16px);
+    transition: all var(--pwp-motion-slow) var(--pwp-easing-default);
+    z-index: 99;
+  }
+
+  .mobile-menu.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .mobile-menu nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--pwp-space-2);
+  }
+
+  .mobile-nav-link {
+    font-family: var(--pwp-font-family-heading);
+    font-size: var(--pwp-font-size-2xl);
+    font-weight: var(--pwp-font-weight-semibold);
+    color: var(--pwp-color-text-secondary);
+    text-decoration: none;
+    padding: var(--pwp-space-3) var(--pwp-space-6);
+    transition: all var(--pwp-motion-fast) var(--pwp-easing-default);
+  }
+
+  .mobile-nav-link:hover {
+    color: var(--pwp-color-accent-primary);
+  }
+
+  .mobile-cta {
+    margin-top: var(--pwp-space-6);
+    font-size: var(--pwp-font-size-lg);
+    padding: var(--pwp-space-4) var(--pwp-space-10);
+  }
+
+  @media (min-width: 768px) {
+    .mobile-menu {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // Mobile menu toggle
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+
+  toggle?.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', (!expanded).toString());
+    menu?.classList.toggle('open');
+    menu?.setAttribute('aria-hidden', expanded.toString());
+    document.body.style.overflow = expanded ? '' : 'hidden';
+  });
+
+  // Close on link click
+  menu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle?.setAttribute('aria-expanded', 'false');
+      menu?.classList.remove('open');
+      menu?.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Sticky header scroll behavior
+  const header = document.getElementById('site-header');
+  let lastScroll = 0;
+
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.scrollY;
+    if (currentScroll > 50) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+    lastScroll = currentScroll;
+  }, { passive: true });
+</script>

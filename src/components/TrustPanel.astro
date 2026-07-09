@@ -1,0 +1,83 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  items: { value: string; label: string }[];
+}
+
+const { eyebrow, title, items } = Astro.props;
+---
+
+<section class="trust-panel section">
+  <div class="container">
+    {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+    <h2 class="trust-title reveal">{title}</h2>
+    <div class="trust-grid">
+      {items.map((item, i) => (
+        <div class={`trust-item reveal delay-${(i % 4 + 1) * 100}`}>
+          <span class="trust-value gradient-text">{item.value}</span>
+          <span class="trust-label">{item.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .trust-panel {
+    background: var(--pwp-color-background-elevated);
+    border-top: 1px solid var(--pwp-color-border-subtle);
+    border-bottom: 1px solid var(--pwp-color-border-subtle);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .trust-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--pwp-color-accent-primary-muted), transparent 70%);
+    pointer-events: none;
+  }
+
+  .trust-title {
+    text-align: center;
+    margin-bottom: var(--pwp-space-12);
+    font-size: var(--pwp-font-size-3xl);
+    position: relative;
+  }
+
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--pwp-space-8);
+    text-align: center;
+    position: relative;
+  }
+
+  .trust-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--pwp-space-2);
+  }
+
+  .trust-value {
+    font-family: var(--pwp-font-family-heading);
+    font-size: var(--pwp-font-size-5xl);
+    font-weight: var(--pwp-font-weight-bold);
+    line-height: 1;
+  }
+
+  .trust-label {
+    font-size: var(--pwp-font-size-sm);
+    color: var(--pwp-color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: var(--pwp-font-weight-medium);
+  }
+</style>

@@ -1,0 +1,123 @@
+---
+import '../styles/theme.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalURL?: string;
+  ogImage?: string;
+  pageType?: 'website' | 'article';
+  jsonLd?: object;
+  transparentHeader?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonicalURL = Astro.url.href,
+  ogImage = '/images/og-default.jpg',
+  pageType = 'website',
+  jsonLd,
+  transparentHeader = false,
+} = Astro.props;
+
+const siteName = 'Valkyrie Arms Training';
+const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
+
+// Default LocalBusiness schema
+const defaultSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Valkyrie Arms Training",
+  "description": "Women's firearms & self-defense training in Meridian, Idaho. Empowering women through preparedness, education, and practical skills.",
+  "url": "https://valkyriearmstraining.com",
+  "telephone": ["208-815-8592", "208-813-8780"],
+  "email": "info@valkyriearmstraining.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "272 SW 5th #400",
+    "addressLocality": "Meridian",
+    "addressRegion": "ID",
+    "postalCode": "83642",
+    "addressCountry": "US"
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Meridian", "containedInPlace": { "@type": "State", "name": "Idaho" } },
+    { "@type": "City", "name": "Boise", "containedInPlace": { "@type": "State", "name": "Idaho" } },
+    { "@type": "City", "name": "Eagle", "containedInPlace": { "@type": "State", "name": "Idaho" } },
+    { "@type": "City", "name": "Nampa", "containedInPlace": { "@type": "State", "name": "Idaho" } },
+    { "@type": "City", "name": "Kuna", "containedInPlace": { "@type": "State", "name": "Idaho" } },
+    { "@type": "City", "name": "Caldwell", "containedInPlace": { "@type": "State", "name": "Idaho" } }
+  ],
+  "openingHours": "Mo-Su 10:00-19:00"
+};
+
+const schemaToUse = jsonLd || defaultSchema;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="generator" content={Astro.generator} />
+
+  <title>{fullTitle}</title>
+
+  <!-- Canonical -->
+  <link rel="canonical" href={canonicalURL} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content={pageType} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:site_name" content={siteName} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <!-- Geo / Local SEO -->
+  <meta name="geo.region" content="US-ID" />
+  <meta name="geo.placename" content="Meridian, Idaho" />
+
+  <!-- Favicon placeholder -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json" set:html={JSON.stringify(schemaToUse)} />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <SiteHeader transparent={transparentHeader} />
+
+  <main id="main-content">
+    <slot />
+  </main>
+
+  <SiteFooter />
+
+  <!-- Scroll reveal observer -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

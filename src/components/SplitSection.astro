@@ -1,0 +1,145 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  image?: string;
+  imageAlt?: string;
+  reversed?: boolean;
+  items?: string[];
+  variant?: 'text-list' | 'image-text' | 'reversed';
+}
+
+const {
+  eyebrow,
+  title,
+  description,
+  image,
+  imageAlt = '',
+  reversed = false,
+  items = [],
+  variant = 'image-text',
+} = Astro.props;
+---
+
+<section class:list={['split section', { 'split--reversed': reversed || variant === 'reversed' }]}>
+  <div class="container split-inner">
+    <div class="split-text reveal">
+      {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+      <h2 class="split-title">{title}</h2>
+      {description && <p class="split-desc">{description}</p>}
+      {items.length > 0 && (
+        <ul class="split-list">
+          {items.map(item => (
+            <li class="split-list-item">
+              <svg class="split-check" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+      <slot />
+    </div>
+
+    {image && (
+      <div class={`split-media reveal ${reversed || variant === 'reversed' ? 'animate-slide-left' : 'animate-slide-right'}`}>
+        <div class="split-image-wrap">
+          <img src={image} alt={imageAlt} class="split-image" loading="lazy" />
+        </div>
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .split-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--pwp-space-12);
+    align-items: center;
+  }
+
+  .split--reversed .split-inner {
+    direction: rtl;
+  }
+
+  .split--reversed .split-inner > * {
+    direction: ltr;
+  }
+
+  @media (max-width: 768px) {
+    .split-inner {
+      grid-template-columns: 1fr;
+      gap: var(--pwp-space-8);
+    }
+    .split--reversed .split-inner {
+      direction: ltr;
+    }
+  }
+
+  .split-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pwp-space-4);
+  }
+
+  .split-title {
+    font-size: var(--pwp-font-size-3xl);
+    line-height: var(--pwp-line-height-tight);
+  }
+
+  .split-desc {
+    font-size: var(--pwp-font-size-base);
+    color: var(--pwp-color-text-secondary);
+    line-height: var(--pwp-line-height-relaxed);
+    max-width: 50ch;
+  }
+
+  .split-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pwp-space-3);
+    margin-top: var(--pwp-space-2);
+  }
+
+  .split-list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--pwp-space-3);
+    font-size: var(--pwp-font-size-base);
+    color: var(--pwp-color-text-secondary);
+    line-height: var(--pwp-line-height-normal);
+  }
+
+  .split-check {
+    color: var(--pwp-color-accent-gold);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* Image */
+  .split-image-wrap {
+    position: relative;
+    border-radius: var(--pwp-radius-xl);
+    overflow: hidden;
+    box-shadow: var(--pwp-shadow-lg);
+    border: 1px solid var(--pwp-color-border-subtle);
+  }
+
+  .split-image-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--pwp-radius-xl);
+    border: 1px solid var(--pwp-color-border-default);
+    pointer-events: none;
+  }
+
+  .split-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+  }
+</style>

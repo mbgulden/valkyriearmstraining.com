@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import SplitSection from '../../components/SplitSection.astro';
+import LeadCapture from '../../components/LeadCapture.astro';
+import FAQ from '../../components/FAQ.astro';
+---
+
+<BaseLayout
+  title="Idaho Enhanced Concealed Carry for Women"
+  description="Women-only Idaho Enhanced Concealed Carry class in Meridian, ID. Learn Idaho firearm laws, proper grip and stance, situational awareness, safe handling, and when to use or not use a firearm."
+>
+  <Hero
+    variant="service-detail"
+    eyebrow="Classes"
+    title="Idaho Enhanced Concealed Carry for Women"
+    description="Earn your Idaho Enhanced Concealed Carry permit in a supportive, women-only environment. Our class covers everything you need to carry confidently and responsibly."
+    image="/images/instructor-shooting.jpg"
+    imageAlt="Firearms instructor demonstrating proper shooting technique"
+    primaryCTA={{ label: 'Register Now', href: '#lead-capture' }}
+    secondaryCTA={{ label: 'Call Us', href: 'tel:208-815-8592' }}
+  />
+
+  <SplitSection
+    eyebrow="What You'll Learn"
+    title="Comprehensive Concealed Carry Education"
+    description="This class is designed for women of all experience levels — whether you've never touched a firearm or have been shooting for years. We cover the knowledge and skills you need to carry with confidence."
+    image="/images/training-scene.jpg"
+    imageAlt="Women training at the range"
+    items={[
+      'Idaho firearm laws and legal responsibilities',
+      'Proper grip, stance, and shooting fundamentals',
+      'Situational awareness and threat assessment',
+      'Safe firearm handling and storage',
+      'When to use — and when not to use — a firearm',
+    ]}
+  />
+
+  <SplitSection
+    eyebrow="Designed for Women"
+    title="Why Women-Only Training Matters"
+    description="Women learn differently. Most of us want to know the 'why' and the 'how' something works. Our classes are designed to be approachable, encouraging, and empowering — so you can learn at your own pace in a comfortable environment."
+    image="/images/hero-range-action.jpg"
+    imageAlt="Women at outdoor shooting range"
+    reversed={true}
+  />
+
+  <div class="section container">
+    <div class="reveal" style="text-align: center; max-width: 600px; margin: 0 auto;">
+      <span class="eyebrow">Pricing & Schedule</span>
+      <h2>Ready to Get Started?</h2>
+      <p style="color: var(--pwp-color-text-secondary); line-height: var(--pwp-line-height-relaxed);">
+        Contact us for current pricing and upcoming class dates. We offer classes in Meridian and the surrounding Treasure Valley area, including Boise, Eagle, Nampa, Kuna, and Caldwell.
+      </p>
+    </div>
+  </div>
+
+  <LeadCapture
+    eyebrow="Enroll Today"
+    title="Sign Up for Concealed Carry"
+    description="Fill out the form below and we'll get back to you with available class dates and all the details you need to get started."
+  />
+</BaseLayout>

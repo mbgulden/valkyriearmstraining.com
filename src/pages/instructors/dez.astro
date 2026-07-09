@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import SplitSection from '../../components/SplitSection.astro';
+import LeadCapture from '../../components/LeadCapture.astro';
+---
+
+<BaseLayout
+  title="Dez — Co-Founder & Lead Firearms Instructor"
+  description="Meet Dez, Co-Founder and Lead Firearms Instructor at Valkyrie Arms Training. Lifetime of firearms experience, professional racing career, Florida State Guard Corporal, and world traveler."
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Dez",
+    "jobTitle": "Co-Founder & Lead Firearms Instructor",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Valkyrie Arms Training"
+    },
+    "description": "Co-Founder and Lead Firearms Instructor at Valkyrie Arms Training"
+  }}
+>
+  <Hero
+    variant="profile"
+    eyebrow="Co-Founder & Lead Firearms Instructor"
+    title="Dez"
+    description="From the age of five, firearms and the outdoors have been a central part of my life. A lifetime of experience, service, and adventure fuels my passion for teaching women to protect themselves."
+    image="/images/dez-tactical.jpg"
+    imageAlt="Dez in tactical gear"
+  />
+
+  <div class="section container">
+    <div class="profile-content reveal">
+      <div class="profile-bio">
+        <span class="eyebrow">About Dez</span>
+        <h2>A Lifetime of Experience</h2>
+        <p>
+          From the age of five, firearms and the outdoors have been a central part of Dez's life. That lifelong foundation in shooting, hunting, and outdoor skills shaped a career and a calling built on discipline, precision, and service.
+        </p>
+        <p>
+          Dez built a professional racing career that spanned some of the biggest names in motorsports — BMW USA, Subaru, Porsche, and the Chevrolet Corvette program. The discipline, focus, and split-second decision-making required on the track translate directly into firearms instruction, where precision and calm under pressure are everything.
+        </p>
+        <p>
+          Beyond racing, Dez worked as a motorsports videographer, capturing the intensity and skill of professional racing from behind the lens.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <SplitSection
+    eyebrow="Service & Dedication"
+    title="Military Service & Humanitarian Work"
+    description="Dez served as a Corporal in the Florida State Guard, bringing military discipline and leadership to Valkyrie's training programs. That service included hurricane relief operations and Operation Lone Star — real-world missions that demand the exact skills Dez now teaches."
+    image="/images/training-scene.jpg"
+    imageAlt="Training scene"
+    items={[
+      'Florida State Guard Corporal',
+      'Hurricane relief operations',
+      'Operation Lone Star',
+      'Military discipline and leadership',
+    ]}
+  />
+
+  <div class="section container">
+    <div class="profile-content reveal">
+      <div class="profile-bio">
+        <span class="eyebrow">World Traveler</span>
+        <h2>A Global Perspective</h2>
+        <p>
+          Dez has traveled the world — from South America to Thailand to the Caribbean — gaining perspective and experience that inform a unique, well-rounded approach to training. Understanding how people live, move, and stay safe across different cultures and environments adds depth to the practical, real-world skills taught at Valkyrie.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <SplitSection
+    eyebrow="Why Valkyrie"
+    title="Teaching Women to Protect Themselves"
+    description="All of that experience — decades with firearms, professional racing, military service, humanitarian work, and world travel — comes together at Valkyrie Arms Training. Dez brings a patient, knowledgeable, and empowering teaching style that meets every student where they are."
+    image="/images/instructor-shooting.jpg"
+    imageAlt="Instructor shooting"
+    reversed={true}
+    items={[
+      'Lifetime of firearms experience since age five',
+      'Professional racing career — BMW USA, Subaru, Porsche, Chevrolet Corvette',
+      'Motorsports videographer',
+      'Florida State Guard Corporal',
+      'World traveler — South America, Thailand, Caribbean',
+    ]}
+  />
+
+  <LeadCapture
+    eyebrow="Train With Dez"
+    title="Ready to Get Started?"
+    description="Reach out to learn about upcoming classes, private training sessions, or just to ask a question. Dez and the Valkyrie team are here to help."
+  />
+</BaseLayout>
+
+<style>
+  .profile-content {
+    max-width: 720px;
+  }
+
+  .profile-bio {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pwp-space-4);
+  }
+
+  .profile-bio h2 {
+    font-size: var(--pwp-font-size-3xl);
+    line-height: var(--pwp-line-height-tight);
+  }
+
+  .profile-bio p {
+    font-size: var(--pwp-font-size-base);
+    color: var(--pwp-color-text-secondary);
+    line-height: var(--pwp-line-height-relaxed);
+    max-width: 65ch;
+  }
+</style>

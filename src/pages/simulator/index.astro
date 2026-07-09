@@ -1,0 +1,193 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import CardGrid from '../../components/CardGrid.astro';
+import SplitSection from '../../components/SplitSection.astro';
+import LeadCapture from '../../components/LeadCapture.astro';
+
+const audienceCards = [
+  {
+    title: 'Law Enforcement',
+    description: 'Realistic scenario-based training for officers. Practice decision-making, de-escalation, and use-of-force situations in a safe, controlled simulation environment.',
+    icon: '🛡️',
+  },
+  {
+    title: 'Church Security Teams',
+    description: 'Equip your church security team with force-on-force training for active threat scenarios. Practice response protocols in realistic simulated environments.',
+    icon: '⛪',
+  },
+  {
+    title: 'School Security',
+    description: 'Simulation training designed for school security professionals. Practice response to active threat situations and coordinate with your team in realistic scenarios.',
+    icon: '🏫',
+  },
+  {
+    title: 'Military Personnel',
+    description: 'Advanced simulation training for military members looking to maintain and sharpen their tactical skills in realistic force-on-force scenarios.',
+    icon: '🎖️',
+  },
+  {
+    title: 'Police Departments',
+    description: 'Department-level simulation training sessions. Build team coordination, practice tactical communication, and refine engagement protocols.',
+    icon: '👮',
+  },
+  {
+    title: 'Civilians',
+    description: 'Force-on-force simulation training isn\'t just for professionals. Civilians can experience realistic scenario-based training to build preparedness and confidence.',
+    icon: '🏠',
+  },
+];
+---
+
+<BaseLayout
+  title="Force-On-Force Simulation Training"
+  description="Force-on-force simulation training in Meridian, Idaho. Available to law enforcement, military, church security, school security, and civilians. Realistic scenario-based training at Valkyrie Arms Training."
+>
+  <!-- Hero with Background Image -->
+  <Hero
+    variant="default"
+    eyebrow="Simulation Training"
+    title="Force-On-Force Simulation Training"
+    subtitle="Realistic Scenario-Based Training for Everyone"
+    description="Our simulation training system provides force-on-force scenario training in a safe, controlled environment. Unlike our women-only classes, simulation training is open to all — law enforcement, military, church and school security, and civilians."
+    image="/images/dez-tactical.jpg"
+    imageAlt="Dez in tactical gear for simulation training"
+    overlay={true}
+    primaryCTA={{ label: 'Book a Session', href: '#lead-capture' }}
+    secondaryCTA={{ label: 'Contact Us', href: '/contact' }}
+  />
+
+  <!-- Open to All Notice -->
+  <section class="section open-notice">
+    <div class="container">
+      <div class="notice-inner reveal">
+        <div class="notice-badge">Open to All</div>
+        <h2>Not Female-Only — <span class="gradient-text">Open to Everyone</span></h2>
+        <p class="section-subheading">Unlike our women-only firearms and self-defense classes, our force-on-force simulation training is available to everyone — men and women, individuals and teams, professionals and civilians.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who It's For -->
+  <section class="section">
+    <div class="container">
+      <div class="audience-header reveal">
+        <span class="eyebrow">Who It's For</span>
+        <h2>Training for <span class="gradient-text">Every Mission</span></h2>
+        <p class="section-subheading">Our simulation system serves a wide range of professionals and civilians who want realistic, scenario-based training.</p>
+      </div>
+      <CardGrid variant="icon-card" items={audienceCards} columns={3} />
+    </div>
+  </section>
+
+  <!-- About the Simulator -->
+  <SplitSection
+    eyebrow="The Technology"
+    title="Realistic Training, Safe Environment"
+    description="Our force-on-force simulation system creates realistic scenarios that test decision-making, tactical skills, and situational awareness — all in a safe, controlled environment. Train for real-world situations without real-world consequences."
+    image="/images/dez-tactical.jpg"
+    imageAlt="Tactical simulation training"
+    items={[
+      'Realistic force-on-force scenarios',
+      'Safe, controlled training environment',
+      'Decision-making under pressure',
+      'Team coordination and communication',
+      'Available for individuals and groups',
+    ]}
+  />
+
+  <!-- Dez Background -->
+  <SplitSection
+    eyebrow="Your Instructor"
+    title="Led by Real-World Experience"
+    description="Dez brings a lifetime of firearms experience, a professional racing career with BMW USA, Subaru, Porsche, and the Chevrolet Corvette program, plus service as a Florida State Guard Corporal with experience in hurricane relief and Operation Lone Star. A world traveler who has trained across South America, Thailand, and the Caribbean."
+    image="/images/instructor-shooting.jpg"
+    imageAlt="Instructor at the shooting range"
+    reversed={true}
+    items={[
+      'Lifetime of firearms and tactical experience',
+      'Florida State Guard service — hurricane relief, Operation Lone Star',
+      'Professional motorsport background',
+      'International training experience',
+    ]}
+  />
+
+  <!-- Lead Capture for Booking -->
+  <LeadCapture
+    eyebrow="Book a Session"
+    title="Schedule Your Simulation Training"
+    description="Whether you're booking for yourself, your team, or your organization, reach out and we'll set up your simulation training session. Available by appointment."
+  />
+</BaseLayout>
+
+<style>
+  .open-notice {
+    background: var(--pwp-color-background-elevated);
+    border-top: 1px solid var(--pwp-color-border-subtle);
+    border-bottom: 1px solid var(--pwp-color-border-subtle);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .open-notice::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--pwp-color-accent-gold-muted) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .notice-inner {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--pwp-space-4);
+    position: relative;
+  }
+
+  .notice-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--pwp-space-2) var(--pwp-space-6);
+    background: var(--pwp-color-accent-gold-muted);
+    border: 1px solid var(--pwp-color-accent-gold);
+    border-radius: var(--pwp-radius-full);
+    font-family: var(--pwp-font-family-heading);
+    font-size: var(--pwp-font-size-sm);
+    font-weight: var(--pwp-font-weight-semibold);
+    color: var(--pwp-color-accent-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .notice-inner h2 {
+    font-size: var(--pwp-font-size-3xl);
+  }
+
+  .notice-inner .section-subheading {
+    text-align: center;
+  }
+
+  .audience-header {
+    text-align: center;
+    margin-bottom: var(--pwp-space-12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--pwp-space-3);
+  }
+
+  .audience-header h2 {
+    font-size: var(--pwp-font-size-4xl);
+  }
+
+  .audience-header .section-subheading {
+    text-align: center;
+  }
+</style>

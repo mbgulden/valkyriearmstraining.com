@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import SplitSection from '../../components/SplitSection.astro';
+import CardGrid from '../../components/CardGrid.astro';
+import LeadCapture from '../../components/LeadCapture.astro';
+---
+
+<BaseLayout
+  title="Private Training Sessions"
+  description="One-on-one and small group private firearms and self-defense training for women in Meridian, ID. Customized instruction tailored to your individual needs and goals."
+>
+  <Hero
+    variant="service-detail"
+    eyebrow="Classes"
+    title="Private Training Sessions"
+    description="Get personalized, one-on-one or small group instruction tailored to your specific needs, goals, and experience level. Train at your own pace with dedicated attention from our instructors."
+    image="/images/instructor-shooting.jpg"
+    imageAlt="Instructor demonstrating shooting technique"
+    primaryCTA={{ label: 'Schedule a Session', href: '#lead-capture' }}
+    secondaryCTA={{ label: 'Call Us', href: 'tel:208-815-8592' }}
+  />
+
+  <SplitSection
+    eyebrow="Personalized Instruction"
+    title="Training Built Around You"
+    description="Every student is different. Private training lets us customize the curriculum to your specific goals — whether you're a complete beginner, working through a specific challenge, or want to advance beyond our group classes."
+    image="/images/hands-on-training.jpg"
+    imageAlt="Close-up of hands-on firearms training"
+    items={[
+      'One-on-one or small group sessions',
+      'Customized to your experience level and goals',
+      'Flexible scheduling by appointment',
+      'Focused, personalized attention from our instructors',
+      'Train at your own pace in a comfortable environment',
+    ]}
+  />
+
+  <div class="section container">
+    <div class="reveal">
+      <span class="eyebrow">Who It's For</span>
+      <h2>Private Training Is Perfect For</h2>
+    </div>
+    <CardGrid
+      variant="icon-card"
+      items={[
+        {
+          title: 'Complete Beginners',
+          description: 'If you want to learn in a completely private setting before joining a group class, private training gives you space to build confidence.',
+          icon: '🌱',
+        },
+        {
+          title: 'Skill Building',
+          description: 'Working on a specific skill like accuracy, draw technique, or a particular scenario? We can design a session just for that.',
+          icon: '🎯',
+        },
+        {
+          title: 'Small Groups',
+          description: 'Get together with friends, family, or coworkers for a private group session tailored to your collective needs and goals.',
+          icon: '👥',
+        },
+        {
+          title: 'Adaptive Needs',
+          description: 'If you have physical limitations or mobility concerns, private training lets us adapt every exercise to work for you.',
+          icon: '💪',
+        },
+      ]}
+      columns={4}
+    />
+  </div>
+
+  <SplitSection
+    eyebrow="Flexible & Accessible"
+    title="Training by Appointment"
+    description="Private sessions are scheduled by appointment to fit your life. We work with you to find times that work and design a training plan that meets your goals. Every woman deserves access to quality instruction, regardless of experience level or physical ability."
+    image="/images/team-partnership.jpg"
+    imageAlt="Valkyrie Arms Training team"
+    reversed={true}
+  />
+
+  <div class="section container">
+    <div class="reveal" style="text-align: center; max-width: 600px; margin: 0 auto;">
+      <span class="eyebrow">Pricing & Schedule</span>
+      <h2>Let's Build Your Training Plan</h2>
+      <p style="color: var(--pwp-color-text-secondary); line-height: var(--pwp-line-height-relaxed);">
+        Contact us for current pricing and to schedule your private session. Available in Meridian and the surrounding Treasure Valley area, including Boise, Eagle, Nampa, Kuna, and Caldwell.
+      </p>
+    </div>
+  </div>
+
+  <LeadCapture
+    eyebrow="Book Your Session"
+    title="Schedule Your Private Session"
+    description="Fill out the form below and we'll work with you to design a private training session tailored to your goals."
+  />
+</BaseLayout>

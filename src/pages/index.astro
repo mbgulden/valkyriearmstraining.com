@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import CardGrid from '../components/CardGrid.astro';
+import SplitSection from '../components/SplitSection.astro';
+import TrustPanel from '../components/TrustPanel.astro';
+import LeadCapture from '../components/LeadCapture.astro';
+
+const serviceCards = [
+  {
+    title: 'Firearms Training',
+    description: 'Women-focused firearms education from the basics to advanced techniques. Learn in a supportive, judgment-free environment designed for how women learn best.',
+    icon: '🎯',
+    href: '/classes',
+  },
+  {
+    title: 'Self-Defense',
+    description: 'Practical self-defense skills that go beyond the range. Build confidence in your ability to protect yourself, your family, and your community.',
+    icon: '🛡️',
+    href: '/classes/self-defense',
+  },
+  {
+    title: 'Simulator Rental',
+    description: 'Force-on-force simulation training for law enforcement, military, church and school security, and civilians. Open to all — not female-only.',
+    icon: '🖥️',
+    href: '/simulator',
+  },
+];
+
+const coreValues = [
+  { value: '💪', label: 'Empowerment' },
+  { value: '🎯', label: 'Preparedness' },
+  { value: '📚', label: 'Education' },
+  { value: '🤝', label: 'Community' },
+  { value: '🌍', label: 'Accessibility' },
+  { value: '💜', label: 'Compassion' },
+  { value: '⚖️', label: 'Responsibility' },
+  { value: '🔥', label: 'Resilience' },
+];
+---
+
+<BaseLayout
+  title="Valkyrie Arms Training"
+  description="Women's firearms and self-defense training in Meridian, Idaho. Empowering women through preparedness, education, and practical skills to confidently protect themselves, their families, and their communities. Serving Boise, Eagle, Nampa, Kuna, and Caldwell."
+  transparentHeader={true}
+>
+  <!-- Full-height Hero -->
+  <Hero
+    variant="default"
+    title="Confidence Starts Here"
+    subtitle="Women's Firearms & Self-Defense Training in Meridian, Idaho"
+    description="Empowering women through preparedness, education, and practical skills to confidently protect themselves, their families, and their communities."
+    image="/images/hero-range-action.jpg"
+    imageAlt="Women training at outdoor shooting range"
+    primaryCTA={{ label: 'Explore Classes', href: '/classes' }}
+    secondaryCTA={{ label: 'Meet the Team', href: '/instructors' }}
+    overlay={true}
+    fullHeight={true}
+  />
+
+  <!-- Service Cards -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="eyebrow">What We Offer</span>
+        <h2 class="section-heading">Training That <span class="gradient-text">Empowers</span></h2>
+        <p class="section-subheading">Whether you've never held a firearm or you've been shooting for years, Valkyrie has a place for you.</p>
+      </div>
+      <CardGrid variant="linked-card" items={serviceCards} columns={3} />
+    </div>
+  </section>
+
+  <!-- Our Story Split -->
+  <SplitSection
+    eyebrow="Our Story"
+    title="Built By Women, For Women"
+    description="CheRee took class after class, but nothing quite fit. The instruction wasn't designed for how women learn — it lacked the 'why' and the 'how' that make concepts click. That frustration became a mission. Valkyrie Arms Training was born from the idea that women deserve training spaces where they feel welcomed, respected, and empowered to learn at their own pace."
+    image="/images/cheree-at-range.jpg"
+    imageAlt="CheRee at the shooting range in her signature purple"
+    items={[
+      'Approachable, encouraging, and empowering instruction',
+      'Designed around how women actually learn',
+      'Judgment-free environment for all experience levels',
+      'Focus on the "why" and "how," not just the "what"',
+    ]}
+  />
+
+  <!-- Core Values Trust Panel -->
+  <TrustPanel
+    eyebrow="Our Foundation"
+    title="What We Stand For"
+    items={coreValues}
+  />
+
+  <!-- Why Women-Only Split (Reversed) -->
+  <SplitSection
+    eyebrow="Our Approach"
+    title="Why Women-Only Training?"
+    description="Women learn differently. Most of us want to know the 'why' and the 'how' something works — not just be told what to do. We process information through understanding, not just repetition. Valkyrie creates a space where questions are welcomed, pace is respected, and every woman can build confidence without judgment."
+    image="/images/training-scene.jpg"
+    imageAlt="Women's firearms training in progress"
+    reversed={true}
+    items={[
+      'Women-centered teaching methodology',
+      'Focus on understanding, not just repetition',
+      'Supportive community of like-minded women',
+      'All experience levels welcome',
+    ]}
+  />
+
+  <!-- Lead Capture -->
+  <LeadCapture
+    eyebrow="Get Started"
+    title="Ready to Build Your Confidence?"
+    description="Whether you're brand new to firearms or looking to sharpen your skills, we'd love to hear from you. Reach out and let's find the right class for you."
+  />
+</BaseLayout>
+
+<style>
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--pwp-space-12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--pwp-space-3);
+  }
+
+  .section-header .section-heading {
+    font-size: var(--pwp-font-size-4xl);
+  }
+
+  .section-header .section-subheading {
+    text-align: center;
+  }
+</style>

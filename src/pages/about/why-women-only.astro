@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import SplitSection from '../../components/SplitSection.astro';
+import FAQ from '../../components/FAQ.astro';
+import LeadCapture from '../../components/LeadCapture.astro';
+
+const faqItems = [
+  {
+    question: "I've never touched a firearm before. Is this class for me?",
+    answer: "Absolutely. Many of our students have little to no prior experience. Our classes are designed to meet you exactly where you are — whether that's never having held a firearm or having some basic familiarity. We start with the fundamentals and build from there in a supportive, judgment-free environment.",
+  },
+  {
+    question: "I'm nervous or intimidated. What if I don't know anything?",
+    answer: "You're exactly who we designed Valkyrie for. We understand that stepping into something new — especially something involving firearms — can feel overwhelming. Our instructors are patient, encouraging, and create a space where every question is welcomed. You are not alone, and you will never be judged.",
+  },
+  {
+    question: "I've been shooting with my husband, family, or friends for years. Will I still learn something?",
+    answer: "Absolutely. We welcome students of all experience levels. Even seasoned shooters discover new techniques, refine their fundamentals, and gain confidence they didn't know they were missing. Our women-focused approach often reveals insights that traditional training environments overlook.",
+  },
+];
+---
+
+<BaseLayout
+  title="Why Women-Only Training"
+  description="Learn why Valkyrie Arms Training offers women-only firearms and self-defense classes in Meridian, Idaho. Women learn differently — our training is designed to honor that."
+>
+  <!-- Hero with Background Image -->
+  <Hero
+    variant="default"
+    eyebrow="Our Approach"
+    title="Why Women-Only Training?"
+    description="Women learn differently. Our training is designed from the ground up to honor that — creating a space where every woman can build genuine confidence."
+    image="/images/training-scene.jpg"
+    imageAlt="Women engaged in firearms training"
+    overlay={true}
+    primaryCTA={{ label: 'Explore Classes', href: '/classes' }}
+    secondaryCTA={{ label: 'Contact Us', href: '/contact' }}
+  />
+
+  <!-- The Why -->
+  <SplitSection
+    eyebrow="The Difference"
+    title="Women Learn Differently"
+    description="Women learn differently. Most of us want to know the 'why' and the 'how' something works — not just be told what to do. We process information through understanding, not just repetition. Traditional firearms training often misses this, relying on methods that weren't designed with women in mind."
+    image="/images/hands-on-training.jpg"
+    imageAlt="Close-up of hands-on firearms training"
+    items={[
+      'We teach the "why" behind every technique',
+      'We explain the "how" so concepts truly click',
+      'We create space for questions without judgment',
+      'We pace instruction to build real confidence',
+    ]}
+  />
+
+  <!-- The Environment -->
+  <SplitSection
+    eyebrow="The Environment"
+    title="A Space Where You Belong"
+    description="Many women have taken classes where they felt talked down to, rushed, or out of place. At Valkyrie, you'll find an environment that is approachable, encouraging, and empowering. Our classes are designed so that whether you've never held a firearm or you've been shooting for years, you feel welcomed and respected."
+    image="/images/cheree-at-range.jpg"
+    imageAlt="CheRee at the shooting range"
+    reversed={true}
+    items={[
+      'No prior experience required',
+      'Patient, supportive instructors',
+      'Judgment-free learning environment',
+      'All experience levels welcome',
+    ]}
+  />
+
+  <!-- Philosophy Quote Section -->
+  <section class="section quote-section">
+    <div class="container">
+      <div class="philosophy-block reveal">
+        <blockquote class="philosophy-quote">
+          <p>"I don't believe every woman needs to carry a firearm. I do believe every woman deserves to feel prepared, confident, and capable of protecting herself and the people she loves."</p>
+          <footer class="quote-attribution">— CheRee, Founder of Valkyrie Arms Training</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section">
+    <div class="container">
+      <FAQ
+        eyebrow="Common Questions"
+        title="Questions About Women-Only Training"
+        items={faqItems}
+        showSchema={true}
+      />
+    </div>
+  </section>
+
+  <!-- Lead Capture -->
+  <LeadCapture
+    eyebrow="Take the First Step"
+    title="Experience the Valkyrie Difference"
+    description="Discover what it feels like to learn in an environment designed for you. Reach out and let's find the right class for your journey."
+  />
+</BaseLayout>
+
+<style>
+  .quote-section {
+    background: var(--pwp-color-background-elevated);
+    border-top: 1px solid var(--pwp-color-border-subtle);
+    border-bottom: 1px solid var(--pwp-color-border-subtle);
+  }
+
+  .philosophy-block {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .philosophy-quote {
+    position: relative;
+    padding: var(--pwp-space-8);
+  }
+
+  .philosophy-quote::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 5rem;
+    font-family: var(--pwp-font-family-accent);
+    color: var(--pwp-color-accent-primary);
+    line-height: 1;
+    opacity: 0.3;
+  }
+
+  .philosophy-quote p {
+    font-family: var(--pwp-font-family-accent);
+    font-size: var(--pwp-font-size-2xl);
+    font-style: italic;
+    color: var(--pwp-color-text-primary);
+    line-height: var(--pwp-line-height-relaxed);
+    max-width: none;
+  }
+
+  .quote-attribution {
+    margin-top: var(--pwp-space-6);
+    font-family: var(--pwp-font-family-heading);
+    font-size: var(--pwp-font-size-base);
+    font-style: normal;
+    color: var(--pwp-color-accent-gold);
+    font-weight: var(--pwp-font-weight-semibold);
+  }
+</style>

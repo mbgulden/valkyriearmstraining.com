@@ -1,0 +1,159 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import CardGrid from '../../components/CardGrid.astro';
+import LeadCapture from '../../components/LeadCapture.astro';
+
+const classCards = [
+  {
+    title: 'Introduction to Firearms',
+    description: 'Perfect for beginners. Learn firearm safety, basic handling, and fundamentals in a supportive, women-only environment. No prior experience required.',
+    image: '/images/hands-on-training.jpg',
+    imageAlt: 'Hands-on firearms training',
+    href: '/classes/intro-to-firearms',
+    tag: 'Beginner',
+  },
+  {
+    title: 'Handgun Fundamentals',
+    description: 'Build on the basics with focused handgun training. Grip, stance, sight alignment, and trigger control — taught with the "why" and "how" behind every technique.',
+    image: '/images/instructor-shooting.jpg',
+    imageAlt: 'Instructor demonstrating shooting technique',
+    href: '/classes/handgun-fundamentals',
+    tag: 'All Levels',
+  },
+  {
+    title: 'Self-Defense for Women',
+    description: 'Practical self-defense skills that go beyond the range. Situational awareness, conflict avoidance, and physical defense techniques for real-world preparedness.',
+    image: '/images/training-scene.jpg',
+    imageAlt: 'Women in self-defense training',
+    href: '/classes/self-defense',
+    tag: 'All Levels',
+  },
+  {
+    title: 'Concealed Carry Preparation',
+    description: 'Prepare for the responsibility of carrying concealed. Legal considerations, holster selection, drawing techniques, and scenario-based decision making.',
+    image: '/images/cheree-at-range.jpg',
+    imageAlt: 'Concealed carry training at the range',
+    href: '/classes/concealed-carry',
+    tag: 'Intermediate',
+  },
+  {
+    title: 'Advanced Defensive Shooting',
+    description: 'For experienced shooters ready to elevate their skills. Shooting under stress, multiple target engagement, and advanced tactical concepts.',
+    image: '/images/hero-range-action.jpg',
+    imageAlt: 'Advanced shooting at the range',
+    href: '/classes/advanced-defensive',
+    tag: 'Advanced',
+  },
+  {
+    title: 'Force-on-Force Simulation',
+    description: 'Realistic scenario-based training using our simulation system. Open to all — law enforcement, military, church and school security, and civilians.',
+    image: '/images/dez-tactical.jpg',
+    imageAlt: 'Dez in tactical gear for simulation training',
+    href: '/simulator',
+    tag: 'Open to All',
+  },
+];
+---
+
+<BaseLayout
+  title="Training Classes"
+  description="Browse women's firearms and self-defense training classes at Valkyrie Arms Training in Meridian, Idaho. From beginner to advanced, find the class that fits your journey."
+>
+  <!-- Hero -->
+  <Hero
+    variant="centered"
+    eyebrow="Find Your Class"
+    title="Training Classes"
+    description="Whether you've never touched a firearm or you've been shooting for years, Valkyrie has a class for you. Browse our offerings and find the right fit for your journey."
+    image="/images/hero-range-action.jpg"
+    imageAlt="Women training at outdoor shooting range"
+    overlay={true}
+    primaryCTA={{ label: 'Contact Us to Enroll', href: '/contact' }}
+  />
+
+  <!-- Class Grid -->
+  <section class="section">
+    <div class="container">
+      <div class="classes-header reveal">
+        <span class="eyebrow">Our Offerings</span>
+        <h2>Classes for <span class="gradient-text">Every Level</span></h2>
+        <p class="section-subheading">All women-only classes are designed around how women learn best — with patience, understanding, and a focus on the "why." Training is by appointment, 10am–7pm.</p>
+      </div>
+      <CardGrid variant="linked-card" items={classCards} columns={3} />
+    </div>
+  </section>
+
+  <!-- Not Sure Section -->
+  <section class="section not-sure">
+    <div class="container">
+      <div class="not-sure-inner reveal">
+        <span class="eyebrow">Not Sure Where to Start?</span>
+        <h2>We'll Help You Find the Right Class</h2>
+        <p class="section-subheading">Every woman's journey is different. Reach out and we'll help you choose the class that matches your experience level and goals.</p>
+        <div class="not-sure-actions">
+          <a href="/contact" class="btn btn-primary">Get in Touch</a>
+          <a href="/faq" class="btn btn-secondary">Read the FAQ</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lead Capture -->
+  <LeadCapture
+    eyebrow="Enroll Today"
+    title="Ready to Start Training?"
+    description="Classes are by appointment. Reach out and let's find the perfect class for you."
+  />
+</BaseLayout>
+
+<style>
+  .classes-header {
+    text-align: center;
+    margin-bottom: var(--pwp-space-12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--pwp-space-3);
+  }
+
+  .classes-header h2 {
+    font-size: var(--pwp-font-size-4xl);
+  }
+
+  .classes-header .section-subheading {
+    text-align: center;
+  }
+
+  .not-sure {
+    background: var(--pwp-color-background-elevated);
+    border-top: 1px solid var(--pwp-color-border-subtle);
+    border-bottom: 1px solid var(--pwp-color-border-subtle);
+  }
+
+  .not-sure-inner {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--pwp-space-4);
+  }
+
+  .not-sure-inner h2 {
+    font-size: var(--pwp-font-size-3xl);
+  }
+
+  .not-sure-inner .section-subheading {
+    text-align: center;
+  }
+
+  .not-sure-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--pwp-space-4);
+    margin-top: var(--pwp-space-4);
+    justify-content: center;
+  }
+</style>

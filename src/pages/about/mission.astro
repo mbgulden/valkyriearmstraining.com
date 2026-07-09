@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import SplitSection from '../../components/SplitSection.astro';
+import CardGrid from '../../components/CardGrid.astro';
+import LeadCapture from '../../components/LeadCapture.astro';
+
+const coreValueCards = [
+  {
+    title: 'Empowerment',
+    description: 'We believe every woman has the right to feel strong, capable, and confident in her ability to protect herself and the people she loves.',
+    icon: '💪',
+  },
+  {
+    title: 'Preparedness',
+    description: 'Being prepared isn\'t about fear — it\'s about confidence. We equip women with the knowledge and skills to face the unexpected.',
+    icon: '🎯',
+  },
+  {
+    title: 'Education',
+    description: 'Knowledge is the foundation of confidence. We teach the "why" and "how," not just the "what," so every concept truly clicks.',
+    icon: '📚',
+  },
+  {
+    title: 'Community',
+    description: 'Valkyrie is more than classes — it\'s a sisterhood of women supporting each other on the journey to preparedness and confidence.',
+    icon: '🤝',
+  },
+];
+---
+
+<BaseLayout
+  title="Our Mission"
+  description="The mission of Valkyrie Arms Training: empowering women through preparedness, education, and practical skills to confidently protect themselves, their families, and their communities."
+>
+  <!-- Hero -->
+  <Hero
+    variant="minimal"
+    eyebrow="Our Purpose"
+    title="Our Mission"
+    description="Empowering women through preparedness, education, and practical skills to confidently protect themselves, their families, and their communities."
+  />
+
+  <!-- Mission Statement Detail -->
+  <section class="section">
+    <div class="container">
+      <div class="mission-statement reveal">
+        <blockquote class="mission-quote">
+          <p>"Empowering women through preparedness, education, and practical skills to confidently protect themselves, their families, and their communities."</p>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission in Action -->
+  <SplitSection
+    eyebrow="Mission in Action"
+    title="What This Means for You"
+    description="Our mission isn't just words on a page — it's the guiding force behind everything we do. From the way we design our classes to the environment we create in every session, we are driven by the belief that every woman deserves to feel prepared, confident, and capable."
+    image="/images/hands-on-training.jpg"
+    imageAlt="Close-up of hands-on firearms training"
+    items={[
+      'Classes designed around how women learn best',
+      'Judgment-free, supportive training environment',
+      'Practical skills that apply to real life',
+      'A community that lifts each other up',
+    ]}
+  />
+
+  <!-- CheRee Philosophy -->
+  <SplitSection
+    eyebrow="Founder's Philosophy"
+    title="Every Woman Deserves to Feel Prepared"
+    description="I don't believe every woman needs to carry a firearm. I do believe every woman deserves to feel prepared, confident, and capable of protecting herself and the people she loves."
+    image="/images/cheree-at-range.jpg"
+    imageAlt="CheRee at the shooting range"
+    reversed={true}
+    items={[
+      'Learning should be approachable and encouraging',
+      'Preparedness is about confidence, not fear',
+      'Practical skills for real-world situations',
+    ]}
+  />
+
+  <!-- Core Values Cards -->
+  <section class="section">
+    <div class="container">
+      <div class="values-header reveal">
+        <span class="eyebrow">Our Foundation</span>
+        <h2>Built on <span class="gradient-text">Core Values</span></h2>
+        <p class="section-subheading">These values guide every class, every interaction, and every decision at Valkyrie Arms Training.</p>
+      </div>
+      <CardGrid variant="icon-card" items={coreValueCards} columns={4} />
+    </div>
+  </section>
+
+  <!-- Lead Capture -->
+  <LeadCapture
+    eyebrow="Live the Mission"
+    title="Join the Valkyrie Community"
+    description="Our mission is to empower women — and that starts with you. Reach out to learn more about how Valkyrie can help you build confidence."
+  />
+</BaseLayout>
+
+<style>
+  .mission-statement {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .mission-quote {
+    position: relative;
+    padding: var(--pwp-space-12) var(--pwp-space-8);
+    background: var(--pwp-color-surface-card);
+    border-radius: var(--pwp-radius-xl);
+    border: 1px solid var(--pwp-color-border-subtle);
+  }
+
+  .mission-quote::before {
+    content: '"';
+    position: absolute;
+    top: -20px;
+    left: var(--pwp-space-8);
+    font-size: 6rem;
+    font-family: var(--pwp-font-family-accent);
+    color: var(--pwp-color-accent-primary);
+    line-height: 1;
+    opacity: 0.4;
+  }
+
+  .mission-quote p {
+    font-family: var(--pwp-font-family-accent);
+    font-size: var(--pwp-font-size-2xl);
+    font-style: italic;
+    color: var(--pwp-color-text-primary);
+    line-height: var(--pwp-line-height-relaxed);
+    max-width: none;
+  }
+
+  .values-header {
+    text-align: center;
+    margin-bottom: var(--pwp-space-12);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--pwp-space-3);
+  }
+
+  .values-header h2 {
+    font-size: var(--pwp-font-size-4xl);
+  }
+
+  .values-header .section-subheading {
+    text-align: center;
+  }
+</style>

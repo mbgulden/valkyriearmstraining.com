@@ -1,0 +1,40 @@
+engine: prismatic-web-plugin
+version: "0.2.0"
+client:
+  name: Valkyrie Arms Training
+  domain: valkyriearmstraining.com
+  industry: firearms-training
+  location:
+    address: "272 SW 5th #400"
+    city: Meridian
+    state: ID
+    zip: "83642"
+    serviceAreas:
+      - Meridian
+      - Boise
+      - Eagle
+      - Nampa
+      - Kuna
+      - Caldwell
+      - Star
+      - Mountain Home
+  contacts:
+    phone:
+      - "208-815-8592"
+      - "208-813-8780"
+    email: info@valkyriearmstraining.com
+theme:
+  id: pwp.theme.valkyrie-empowerment
+  name: Valkyrie Empowerment
+  framework: astro
+  styleTags:
+    - dark
+    - empowerment
+    - women-focused
+    - warm
+    - premium
+    - local
+deploy:
+  adapter: cloudflare-pages
+  project: valkyriearmstraining-com
+  account: michael@growthwebdev.com

@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import SplitSection from '../../components/SplitSection.astro';
+import LeadCapture from '../../components/LeadCapture.astro';
+---
+
+<BaseLayout
+  title="CheRee Eveland — Owner & CEO"
+  description="Meet CheRee Eveland, Owner & CEO of Valkyrie Arms Training. Idaho native, entrepreneur, and passionate advocate for helping women build confidence through preparedness and education."
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "CheRee Eveland",
+    "jobTitle": "Owner & CEO",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Valkyrie Arms Training"
+    },
+    "description": "Idaho native, entrepreneur, and founder of Valkyrie Arms Training"
+  }}
+>
+  <Hero
+    variant="profile"
+    eyebrow="Owner & CEO"
+    title="CheRee Eveland"
+    description="Idaho native, entrepreneur, and founder of Valkyrie Arms Training, passionate about helping women build confidence through preparedness, education, and practical life skills."
+    image="/images/cheree-at-range.jpg"
+    imageAlt="CheRee Eveland in purple shirt at the range"
+  />
+
+  <div class="section container">
+    <div class="profile-content reveal">
+      <div class="profile-bio">
+        <span class="eyebrow">About CheRee</span>
+        <h2>A Passion Born from Experience</h2>
+        <p>
+          CheRee took several gun classes over the years and walked away feeling like none of them really worked for her as a woman. The instruction wasn't designed for how women learn — it was designed for a general audience that didn't account for the unique questions, concerns, and learning styles women bring to the table.
+        </p>
+        <p>
+          That experience became the foundation for Valkyrie Arms Training. CheRee set out to build something different — a place where women could learn in a supportive, patient, and empowering environment that actually meets them where they are.
+        </p>
+        <p>
+          As an Idaho native and entrepreneur, CheRee brings a deep commitment to her community. She serves as an event and program director, community educator, and preparedness advocate — always focused on helping women feel confident and capable, whether or not they choose to carry a firearm.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section container">
+    <blockquote class="profile-quote reveal">
+      <p>"I don't believe every woman needs to carry a firearm. I do believe every woman deserves to feel prepared, confident, and capable of protecting herself and the people she loves."</p>
+      <cite>— CheRee Eveland</cite>
+    </blockquote>
+  </div>
+
+  <SplitSection
+    eyebrow="Philosophy"
+    title="Approachable, Encouraging, Empowering"
+    description="I believe learning should be approachable, encouraging, and empowering. Women learn differently — most of us want to know the 'why' and the 'how' something works. That's why every Valkyrie class is built around patience, practical skills, and real-world application."
+    image="/images/training-scene.jpg"
+    imageAlt="Training scene"
+    items={[
+      'Preparedness advocate and community educator',
+      'Event and program director',
+      'Entrepreneur and business owner',
+      'Idaho native with deep community roots',
+    ]}
+  />
+
+  <SplitSection
+    eyebrow="Valkyrie's Mission"
+    title="Building Confidence Through Preparedness"
+    description="Valkyrie Arms Training was built on the belief that every woman deserves access to quality education in preparedness, self-defense, and practical life skills. Whether it's firearms training, situational awareness, self-defense, or medical preparedness — the goal is always the same: empowering women to protect themselves, their families, and their communities."
+    image="/images/hero-range-action.jpg"
+    imageAlt="Women at outdoor range"
+    reversed={true}
+  />
+
+  <LeadCapture
+    eyebrow="Train With CheRee"
+    title="Ready to Get Started?"
+    description="Reach out to learn about upcoming classes, private training sessions, or just to ask a question. CheRee and the Valkyrie team are here to help."
+  />
+</BaseLayout>
+
+<style>
+  .profile-content {
+    max-width: 720px;
+  }
+
+  .profile-bio {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pwp-space-4);
+  }
+
+  .profile-bio h2 {
+    font-size: var(--pwp-font-size-3xl);
+    line-height: var(--pwp-line-height-tight);
+  }
+
+  .profile-bio p {
+    font-size: var(--pwp-font-size-base);
+    color: var(--pwp-color-text-secondary);
+    line-height: var(--pwp-line-height-relaxed);
+    max-width: 65ch;
+  }
+
+  .profile-quote {
+    max-width: 720px;
+    padding: var(--pwp-space-8);
+    background: var(--pwp-color-surface-card);
+    border-left: 4px solid var(--pwp-color-accent-primary);
+    border-radius: var(--pwp-radius-lg);
+  }
+
+  .profile-quote p {
+    font-size: var(--pwp-font-size-lg);
+    font-style: italic;
+    color: var(--pwp-color-text-primary);
+    line-height: var(--pwp-line-height-relaxed);
+    margin-bottom: var(--pwp-space-4);
+  }
+
+  .profile-quote cite {
+    font-size: var(--pwp-font-size-sm);
+    color: var(--pwp-color-accent-gold);
+    font-style: normal;
+    font-weight: var(--pwp-font-weight-semibold);
+  }
+</style>

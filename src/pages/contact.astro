@@ -1,0 +1,180 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SplitSection from '../components/SplitSection.astro';
+import LeadCapture from '../components/LeadCapture.astro';
+---
+
+<BaseLayout
+  title="Contact Us"
+  description="Contact Valkyrie Arms Training in Meridian, Idaho. Call CheRee at 208-815-8592 or Dez at 208-813-8780. Located at 272 SW 5th #400, Meridian, ID 83642."
+>
+  <!-- Hero -->
+  <Hero
+    variant="minimal"
+    eyebrow="Get in Touch"
+    title="Contact Us"
+    description="Whether you're ready to sign up for a class, have questions, or just want to learn more — we'd love to hear from you."
+  />
+
+  <!-- Contact Info Split -->
+  <SplitSection
+    eyebrow="Find Us"
+    title="Visit, Call, or Email"
+    description="Valkyrie Arms Training is based in Meridian, Idaho, serving women across the Treasure Valley including Boise, Eagle, Nampa, Kuna, and Caldwell. Training is by appointment."
+  >
+    <div class="contact-details">
+      <div class="contact-card">
+        <h3 class="contact-card-title">📍 Our Location</h3>
+        <p class="contact-card-text">272 SW 5th #400<br />Meridian, ID 83642</p>
+      </div>
+      <div class="contact-card">
+        <h3 class="contact-card-title">📞 Phone</h3>
+        <p class="contact-card-text">
+          <a href="tel:208-815-8592">CheRee: 208-815-8592</a><br />
+          <a href="tel:208-813-8780">Dez: 208-813-8780</a>
+        </p>
+      </div>
+      <div class="contact-card">
+        <h3 class="contact-card-title">✉️ Email</h3>
+        <p class="contact-card-text">
+          <a href="mailto:info@valkyriearmstraining.com">info@valkyriearmstraining.com</a>
+        </p>
+      </div>
+      <div class="contact-card">
+        <h3 class="contact-card-title">🕐 Hours</h3>
+        <p class="contact-card-text">10:00 AM – 7:00 PM<br />Training by appointment</p>
+      </div>
+    </div>
+  </SplitSection>
+
+  <!-- Map Placeholder -->
+  <section class="section">
+    <div class="container">
+      <div class="map-header reveal">
+        <span class="eyebrow">Location</span>
+        <h2>Find Us in Meridian</h2>
+      </div>
+      <div class="map-placeholder reveal delay-200">
+        <div class="map-inner">
+          <div class="map-pin">📍</div>
+          <p class="map-address">272 SW 5th #400, Meridian, ID 83642</p>
+          <p class="map-serving">Serving Meridian, Boise, Eagle, Nampa, Kuna & Caldwell</p>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=272+SW+5th+%23400+Meridian+ID+83642"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn btn-secondary"
+          >
+            Open in Google Maps
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lead Capture Form -->
+  <LeadCapture
+    eyebrow="Send a Message"
+    title="Reach Out to Us"
+    description="Fill out the form below and we'll get back to you as soon as possible. Whether you have questions about our classes or you're ready to get started, we're here for you."
+  />
+</BaseLayout>
+
+<style>
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--pwp-space-4);
+    margin-top: var(--pwp-space-4);
+  }
+
+  .contact-card {
+    background: var(--pwp-color-surface-card);
+    border: 1px solid var(--pwp-color-border-subtle);
+    border-radius: var(--pwp-radius-lg);
+    padding: var(--pwp-space-5) var(--pwp-space-6);
+    transition: all var(--pwp-motion-normal) var(--pwp-easing-default);
+  }
+
+  .contact-card:hover {
+    border-color: var(--pwp-color-border-default);
+    transform: translateY(-2px);
+    box-shadow: var(--pwp-shadow-md);
+  }
+
+  .contact-card-title {
+    font-size: var(--pwp-font-size-base);
+    font-weight: var(--pwp-font-weight-semibold);
+    margin-bottom: var(--pwp-space-2);
+    color: var(--pwp-color-text-primary);
+  }
+
+  .contact-card-text {
+    font-size: var(--pwp-font-size-sm);
+    color: var(--pwp-color-text-secondary);
+    line-height: var(--pwp-line-height-relaxed);
+  }
+
+  .contact-card-text a {
+    color: var(--pwp-color-accent-gold);
+    text-decoration: none;
+    font-weight: var(--pwp-font-weight-medium);
+  }
+
+  .contact-card-text a:hover {
+    color: var(--pwp-color-accent-gold-hover);
+  }
+
+  .map-header {
+    margin-bottom: var(--pwp-space-8);
+  }
+
+  .map-header h2 {
+    font-size: var(--pwp-font-size-3xl);
+  }
+
+  .map-placeholder {
+    background: var(--pwp-color-surface-card);
+    border: 1px solid var(--pwp-color-border-subtle);
+    border-radius: var(--pwp-radius-xl);
+    overflow: hidden;
+    position: relative;
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image:
+      radial-gradient(circle at 20% 50%, var(--pwp-color-accent-primary-muted) 0%, transparent 50%),
+      radial-gradient(circle at 80% 50%, var(--pwp-color-accent-gold-muted) 0%, transparent 50%);
+  }
+
+  .map-inner {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--pwp-space-4);
+    padding: var(--pwp-space-12);
+  }
+
+  .map-pin {
+    font-size: 3rem;
+    filter: drop-shadow(0 0 12px rgba(155, 109, 215, 0.5));
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .map-address {
+    font-family: var(--pwp-font-family-heading);
+    font-size: var(--pwp-font-size-xl);
+    font-weight: var(--pwp-font-weight-semibold);
+    color: var(--pwp-color-text-primary);
+    max-width: none;
+  }
+
+  .map-serving {
+    font-size: var(--pwp-font-size-sm);
+    color: var(--pwp-color-text-secondary);
+    max-width: none;
+  }
+</style>
