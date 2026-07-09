@@ -1,4 +1,6 @@
 ---
+import { getFocalPoint } from '../utils/mediaResolver.js';
+
 interface Props {
   eyebrow?: string;
   title: string;
@@ -24,6 +26,11 @@ const {
   focalX,
   focalY,
 } = Astro.props;
+
+// Resolve default focal position if not explicitly provided
+const resolvedFocal = getFocalPoint(image);
+const posX = focalX || resolvedFocal.x;
+const posY = focalY || resolvedFocal.y;
 ---
 
 <section class:list={['split section', { 'split--reversed': reversed || variant === 'reversed' }]}>
@@ -52,7 +59,7 @@ const {
             src={image}
             alt={imageAlt}
             class="split-image"
-            style={`object-position: ${focalX || '50%'} ${focalY || '50%'};`}
+            style={`object-position: ${posX} ${posY};`}
             loading="lazy"
           />
         </div>

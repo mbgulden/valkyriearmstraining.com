@@ -1,4 +1,6 @@
 ---
+import { getFocalPoint } from '../utils/mediaResolver.js';
+
 interface CardItem {
   title: string;
   description: string;
@@ -26,7 +28,13 @@ const cols = columns || (variant === '4-up' ? 4 : 3);
       <a href={item.href} class={`card card-item reveal delay-${(i % 4 + 1) * 100}`}>
         {item.image && (
           <div class="card-image-wrap">
-            <img src={item.image} alt={item.imageAlt || item.title} class="card-image" loading="lazy" />
+            <img
+              src={item.image}
+              alt={item.imageAlt || item.title}
+              class="card-image"
+              style={`object-position: ${getFocalPoint(item.image).x} ${getFocalPoint(item.image).y};`}
+              loading="lazy"
+            />
             {item.tag && <span class="card-tag">{item.tag}</span>}
           </div>
         )}
@@ -40,7 +48,13 @@ const cols = columns || (variant === '4-up' ? 4 : 3);
       <div class={`card card-item reveal delay-${(i % 4 + 1) * 100}`}>
         {item.image && (
           <div class="card-image-wrap">
-            <img src={item.image} alt={item.imageAlt || item.title} class="card-image" loading="lazy" />
+            <img
+              src={item.image}
+              alt={item.imageAlt || item.title}
+              class="card-image"
+              style={`object-position: ${getFocalPoint(item.image).x} ${getFocalPoint(item.image).y};`}
+              loading="lazy"
+            />
           </div>
         )}
         {item.icon && <span class="card-icon">{item.icon}</span>}

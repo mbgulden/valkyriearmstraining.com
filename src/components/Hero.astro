@@ -1,4 +1,6 @@
 ---
+import { getFocalPoint } from '../utils/mediaResolver.js';
+
 interface Props {
   variant?: 'default' | 'split-media' | 'centered' | 'service-detail' | 'local-seo' | 'profile' | 'minimal';
   eyebrow?: string;
@@ -30,6 +32,11 @@ const {
   focalX,
   focalY,
 } = Astro.props;
+
+// Resolve default focal position if not explicitly provided
+const resolvedFocal = getFocalPoint(image);
+const posX = focalX || resolvedFocal.x;
+const posY = focalY || resolvedFocal.y;
 ---
 
 <section class:list={['hero', `hero--${variant}`, { 'hero--full': fullHeight }]}>
@@ -39,7 +46,7 @@ const {
         src={image}
         alt={imageAlt}
         class="hero-bg-image"
-        style={`object-position: ${focalX || '50%'} ${focalY || '50%'};`}
+        style={`object-position: ${posX} ${posY};`}
         loading="eager"
       />
       {overlay && <div class="hero-overlay" />}
@@ -76,7 +83,13 @@ const {
 
     {variant === 'split-media' && image && (
       <div class="hero-media animate-slide-right delay-200">
-        <img src={image} alt={imageAlt} class="hero-media-image" loading="eager" />
+        <img
+          src={image}
+          alt={imageAlt}
+          class="hero-media-image"
+          style={`object-position: ${posX} ${posY};`}
+          loading="eager"
+        />
       </div>
     )}
   </div>
