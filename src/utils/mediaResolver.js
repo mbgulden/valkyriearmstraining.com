@@ -3,13 +3,13 @@
  * Resolves optimal crop focal points dynamically for site assets.
  */
 const SALIENCE_MAP = {
-  'hero-range-action.jpg': { x: '55%', y: '45%' },
-  'cheree-at-range.jpg': { x: '65%', y: '35%' },
-  'training-scene.jpg': { x: '50%', y: '40%' },
-  'dez-tactical.jpg': { x: '50%', y: '35%' },
-  'hands-on-training.jpg': { x: '50%', y: '50%' },
-  'instructor-shooting.jpg': { x: '60%', y: '40%' },
-  'team-partnership.jpg': { x: '50%', y: '45%' }
+  'hero-range-action.jpg': { x: '60%', y: '20%' },
+  'cheree-at-range.jpg': { x: '60%', y: '20%' },
+  'training-scene.jpg': { x: '50%', y: '35%' },
+  'dez-tactical.jpg': { x: '65%', y: '30%' },
+  'hands-on-training.jpg': { x: '65%', y: '30%' },
+  'instructor-shooting.jpg': { x: '60%', y: '20%' },
+  'team-partnership.jpg': { x: '50%', y: '18%' }
 };
 
 export function getFocalPoint(imagePath) {
